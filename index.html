@@ -155,7 +155,7 @@
         #loading-screen { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.95); z-index: 100; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
         .spinner { width: 60px; height: 60px; border: 6px solid #f3f3f3; border-top: 6px solid var(--primary-blue); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
         .loading-text { font-size: 18px; font-weight: 700; color: var(--text-dark); }
-        .loading-sub { font-size: 14px; color: var(--text-gray); margin-top: 5px; }
+        .loading-sub { font-size: 18px; color: var(--text-gray); margin-top: 5px; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         /* =========================================
@@ -202,7 +202,7 @@
         .gauge-main-label .highlight-blue { font-size: 28px; }
 
         .summary-text-wrap { flex: 1; }
-        .summary-title { font-size: 18px; margin-bottom: 15px; line-height: 1.5; color: var(--text-dark); }
+        .summary-title { font-size: 16px; margin-bottom: 15px; line-height: 1.6; color: var(--text-dark); text-align: center; word-break: keep-all; }
         .highlight-blue { color: var(--sky-blue); font-weight: 700; }
         .summary-desc { font-size: 14px; line-height: 1.6; color: #555; background: white; padding: 15px; border-radius: 10px; }
         
@@ -294,7 +294,7 @@
         <div class="question-step active" id="q1">
             <div class="question-title"><span class="q-number-badge">1</span>&lt;보기&gt;의 빈칸에 알맞은 말은?</div>
             <div class="example-box"><div class="example-text">친구와 노느라 숙제하는 걸 ( &nbsp;&nbsp;&nbsp;&nbsp; ) 말았다.</div></div>
-            <div class="answer-row"><button class="answer-btn" onclick="selectAnswer(this, 1)">잃고</button><button class="answer-btn" onclick="selectAnswer(this, 1)">잊고</button></div>
+            <div class="answer-row"><button class="answer-btn" onclick="selectAnswer(this, 1)">잃고</button><button class="answer-btn" onclick="selectAnswer(this, 1)">잊고</button><button class="answer-btn" onclick="selectAnswer(this, 1)">입고</button></div>
         </div>
         <div class="question-step" id="q2">
             <div class="split-layout">
@@ -304,13 +304,13 @@
                     제목: 자연의 청소부, 파리의 한살이
                 </strong>
                 <p style="margin-bottom: 15px;">
-                    파리는 왜 음식물이나 쓰레기통 근처에 자주 모일까요? 이것은 파리의 한살이 과정과 관련이 있습니다. 파리는 나비나 벌처럼 곤충에 속하는 작은 동물입니다. 파리는 <strong>알 &rarr; 애벌레 &rarr; 번데기 &rarr; 어른벌레</strong>의 네 단계를 거치는 한살이 과정을 겪는데, 이 과정을 ‘완전 탈바꿈’이라고 합니다.
+                    &nbsp;&nbsp;&nbsp;파리는 왜 음식물이나 쓰레기통 근처에 자주 모일까요? 이것은 파리의 한살이 과정과 관련이 있습니다. 파리는 나비나 벌처럼 곤충에 속하는 작은 동물입니다. 파리는 <strong>알 &rarr; 애벌레 &rarr; 번데기 &rarr; 어른벌레</strong>의 네 단계를 거치는 한살이 과정을 겪는데, 이 과정을 ‘완전 탈바꿈’이라고 합니다.
                 </p>
                 <p style="margin-bottom: 15px;">
-                    파리의 한살이는 썩은 음식물이나 동물의 배설물에 알을 낳으며 시작됩니다. 이것이 바로 파리가 음식물이나 쓰레기통 근처에서 자주 보이는 이유입니다. 알이 부화하면 ‘구더기’라고 불리는 애벌레가 되는데, 구더기는 자신이 태어난 곳 주변의 썩은 물질을 먹으며 자랍니다. 이 과정은 주변의 더러운 찌꺼기를 줄이는 데 도움이 됩니다. 구더기는 허물을 벗으며 몸집이 커지고, 몸집이 충분히 커지면 움직임을 멈추고 번데기가 됩니다. 번데기 속에서 애벌레의 몸이 어른벌레의 모습으로 바뀌며, 성장이 끝나면 우리가 아는 파리의 모습이 됩니다.
+                    &nbsp;&nbsp;&nbsp;파리의 한살이는 썩은 음식물이나 동물의 배설물에 알을 낳으며 시작됩니다. 이것이 바로 파리가 음식물이나 쓰레기통 근처에서 자주 보이는 이유입니다. 알이 부화하면 ‘구더기’라고 불리는 애벌레가 되는데, 구더기는 자신이 태어난 곳 주변의 썩은 물질을 먹으며 자랍니다. 이 과정은 주변의 더러운 찌꺼기를 줄이는 데 도움이 됩니다. 구더기는 허물을 벗으며 몸집이 커지고, 몸집이 충분히 커지면 움직임을 멈추고 번데기가 됩니다. 번데기 속에서 애벌레의 몸이 어른벌레의 모습으로 바뀌며, 성장이 끝나면 우리가 아는 파리의 모습이 됩니다.
                 </p>
                 <p>
-                    많은 사람들이 파리를 귀찮거나 더러운 해충이라고 생각하지만, 사실 파리는 자라는 동안 썩은 것을 먹어 없애기 때문에 자연을 깨끗하게 만드는 데 도움을 주는 특별한 역할을 합니다. 그래서 과학자들은 파리를 <strong>‘자연의 청소부’</strong>라고 부르며, 최근에는 구더기를 이용해 음식물 쓰레기를 처리하는 연구도 이루어지고 있습니다.
+                    &nbsp;&nbsp;&nbsp;많은 사람들이 파리를 귀찮거나 더러운 해충이라고 생각하지만, 사실 파리는 자라는 동안 썩은 것을 먹어 없애기 때문에 자연을 깨끗하게 만드는 데 도움을 주는 특별한 역할을 합니다. 그래서 과학자들은 파리를 <strong>‘자연의 청소부’</strong>라고 부르며, 최근에는 구더기를 이용해 음식물 쓰레기를 처리하는 연구도 이루어지고 있습니다.
                 </p>
             </div>
         </div>
@@ -331,12 +331,12 @@
             <div class="summary-left">
                 <div class="donut-chart-wrap">
                     <div class="donut-chart" id="scoreChart" data-percent="0"></div>
-                    <div class="donut-label">총점 [85]점</div>
+                    <div class="donut-label">총 20문항 중 [17]문항 정답</div>
                 </div>
                 <div class="summary-text-wrap">
                     <div class="summary-title">
                         <span class="highlight-blue">[김엘리]</span>님의 문해력 수준은 <span class="highlight-blue">[다이아몬드💎]</span>,<br>
-                        M-ELQ 지수는 <span class="highlight-blue">[2.3]</span>으로 초등 2학년 3개월 수준입니다.
+                        M-ELQ 지수는 <span class="highlight-blue">[2.3]</span>으로 <br>초등 2학년 3개월 수준입니다.
                     </div>
                     <div class="summary-desc">
                         <strong>김엘리</strong>님의 어휘력과 사실적 독해력은 매우 뛰어나요! 다만, 추론적 독해력은 조금 더 연습이 필요해요.
