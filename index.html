@@ -218,6 +218,7 @@
         .grid-line { position: absolute; left: 0; right: 0; border-top: 1px solid #f0f0f0; }
         .grid-label { position: absolute; left: -30px; width: 25px; text-align: right; font-size: 11px; color: #999; transform: translateY(-50%); }
         .bar-group { display: flex; flex-direction: column; align-items: center; width: 50px; position: relative; justify-content: flex-end; height: 100%; z-index: 1;}
+        .bar-group:hover { z-index: 10000; }
         .bar { width: 20px; border-radius: 6px 6px 0 0; position: relative; height: 0px; transition: height 1.5s cubic-bezier(0.22, 1, 0.36, 1); }
         .bar.color-1 { background-color: var(--col-vocab); } .bar.color-2 { background-color: var(--col-fact); } .bar.color-3 { background-color: var(--col-crit); } .bar.color-4 { background-color: var(--col-inf); } .bar.color-5 { background-color: var(--col-back); }
         .bar-value { font-size: 13px; margin-bottom: 8px; font-weight: bold; opacity: 0; transition: opacity 1s 1s; color: var(--text-dark); }
@@ -229,7 +230,7 @@
         .avg-line { fill: none; stroke: #aaccff; stroke-width: 3px; stroke-dasharray: 6, 4; }
         .avg-dot { fill: #fff; stroke: #aaccff; stroke-width: 3px; r: 6; }
         .tooltip-container { position: relative; display: flex; justify-content: center; }
-        .tooltip-text { visibility: hidden; width: 200px; background-color: rgba(30, 30, 30, 0.95); color: #fff; text-align: center; border-radius: 8px; padding: 10px; position: absolute; z-index: 9999; bottom: 35px; left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.3s; font-size: 12px; line-height: 1.5; pointer-events: none; box-shadow: 0 4px 15px rgba(0,0,0,0.2); word-break: keep-all; }
+        .tooltip-text { visibility: hidden; width: 200px; background-color: rgba(30, 30, 30, 0.95); color: #fff; text-align: center; border-radius: 8px; padding: 10px; position: absolute; z-index: 10000; bottom: 35px; left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.3s; font-size: 12px; line-height: 1.5; pointer-events: none; box-shadow: 0 4px 15px rgba(0,0,0,0.2); word-break: keep-all; }
         .tooltip-text::after { content: ""; position: absolute; top: 100%; left: 50%; margin-left: -6px; border-width: 6px; border-style: solid; border-color: rgba(30, 30, 30, 0.95) transparent transparent transparent; }
         .tooltip-container:hover .tooltip-text { visibility: visible; opacity: 1; }
 
@@ -364,7 +365,7 @@
                 </div>
                 <div class="graph-container">
                     <div class="y-axis-grid"><div class="grid-line" style="bottom:0%"></div><div class="grid-label" style="bottom:0%">0</div><div class="grid-line" style="bottom:50%"></div><div class="grid-label" style="bottom:50%">50</div><div class="grid-line" style="bottom:100%"></div><div class="grid-label" style="bottom:100%">100</div></div>
-                    <svg class="svg-graph-layer" viewBox="0 0 500 200" preserveAspectRatio="none"><polyline class="avg-line" points="50,47 150,60 250,70 350,92 450,101" /><circle class="avg-dot" cx="50" cy="47" /><circle class="avg-dot" cx="150" cy="60" /><circle class="avg-dot" cx="250" cy="70" /><circle class="avg-dot" cx="350" cy="92" /><circle class="avg-dot" cx="450" cy="101" /></svg>
+                    <svg class="svg-graph-layer" viewBox="0 0 500 200" preserveAspectRatio="none"><polyline class="avg-line" points="50,47 150,120 250,100 350,40 450,60" /><circle class="avg-dot" cx="50" cy="47" /><circle class="avg-dot" cx="150" cy="120" /><circle class="avg-dot" cx="250" cy="100" /><circle class="avg-dot" cx="350" cy="40" /><circle class="avg-dot" cx="450" cy="60" /></svg>
                     <div class="bar-group"><span class="bar-value">95</span><div class="bar color-1" data-height="171"></div><div class="tooltip-container"><div class="bar-label"><span class="label-icon c1"></span>어휘력</div><span class="tooltip-text">낱말의 정확한 뜻을 알고, 문맥에 맞게 적절히 사용할 수 있는 능력입니다.</span></div></div>
                     <div class="bar-group"><span class="bar-value">82</span><div class="bar color-2" data-height="147.6"></div><div class="tooltip-container"><div class="bar-label"><span class="label-icon c2"></span>사실적 독해력</div><span class="tooltip-text">글에 드러난 정보를 있는 그대로 정확하게 파악하는 능력입니다.</span></div></div>
                     <div class="bar-group"><span class="bar-value">65</span><div class="bar color-3" data-height="117"></div><div class="tooltip-container"><div class="bar-label"><span class="label-icon c3"></span>비판적 독해력</div><span class="tooltip-text">글쓴이의 주장이나 의견의 타당성을 따져보고, 자신의 관점에서 평가하는 능력입니다.</span></div></div>
@@ -448,3 +449,4 @@
 
 </body>
 </html>
+
