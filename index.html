@@ -406,15 +406,26 @@
     
     function selectAnswer(btn, step) { let container = step === 1 ? document.querySelector('#q1 .answer-row') : document.querySelector('#q2 .choice-list'); container.querySelectorAll('button').forEach(b => b.classList.remove('selected')); btn.classList.add('selected'); }
     
-    function nextStep() { 
+  function nextStep() { 
+        // [추가된 부분] 1. 현재 보고 있는 문제 영역 찾기 (q1, q2...)
+        const currentQuestion = document.getElementById(`q${currentStep}`);
+        
+        // [추가된 부분] 2. 그 안에 'selected' 클래스가 붙은(선택된) 버튼이 있는지 확인
+        const isSelected = currentQuestion.querySelector('.selected');
+
+        // [추가된 부분] 3. 선택된 게 없다면 경고창 띄우고 함수 종료(return)
+        if (!isSelected) {
+            alert("정답을 선택해야 다음으로 넘어갈 수 있어요!");
+            return; // 여기서 함수가 끝나서 다음 단계로 넘어가지 않음
+        }
+
+        // --- 아래는 기존 로직과 동일 ---
         if (currentStep < totalSteps) { 
-            // 현재 단계 숨김 & 배지 비활성화
             document.getElementById(`q${currentStep}`).classList.remove('active'); 
             if(currentStep === 1) document.getElementById('badge-vocab').classList.remove('active');
             
             currentStep++; 
             
-            // 다음 단계 표시 & 배지 활성화
             document.getElementById(`q${currentStep}`).classList.add('active'); 
             if(currentStep === 2) document.getElementById('badge-reading').classList.add('active');
             
