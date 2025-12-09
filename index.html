@@ -18,7 +18,7 @@
             --bg-gray: #f2f2f2;
             --title-bg: #e9ecef;
             
-            /* Chart Colors - [수정됨] 어휘력 색상 보라색으로 변경 */
+            /* Chart Colors */
             --col-vocab: #9c27b0; 
             --col-fact: #00c896;  
             --col-crit: #ffb300;  
@@ -31,7 +31,6 @@
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Noto Sans KR', sans-serif; }
-        /* flex-direction: column 추가하여 세로 정렬 가능하게 변경 */
         body { background-color: var(--bg-gray); display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
         button, select { border: none; background: none; cursor: pointer; font-family: inherit; outline: none; }
         
@@ -49,11 +48,9 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.1); 
             overflow: hidden; position: relative; 
             display: flex; flex-direction: column;
-            /* 아래쪽 저작권 문구와의 간격을 위해 마진 추가 */
             margin-bottom: 0; 
         }
         
-        /* 저작권 푸터 스타일 */
         .copyright-footer {
             margin-top: 20px;
             font-size: 12px;
@@ -95,12 +92,14 @@
            4. 메인 화면 (New Dashboard Layout)
            ========================================= */
         #main-screen { flex: 1; background-color: #f5f6f8; padding: 20px; overflow-y: auto; }
-        .dashboard-grid { display: grid; grid-template-columns: 200px 1fr 320px; gap: 20px; height: 540px; }
+        /* [수정] 그리드 전체 높이 증가 (540px -> 600px) */
+        .dashboard-grid { display: grid; grid-template-columns: 200px 1fr 320px; gap: 20px; height: 600px; }
 
         /* --- Left Column --- */
         .left-sidebar { display: flex; flex-direction: column; gap: 20px; height: 100%; }
+        /* [수정] 좌측 메뉴 박스 높이 증가 (400px -> 460px) */
         .subject-menu-box { 
-            background: #e0f2f1; border-radius: 12px; overflow: hidden; border: 1px solid #b2dfdb; height: 400px; 
+            background: #e0f2f1; border-radius: 12px; overflow: hidden; border: 1px solid #b2dfdb; height: 460px; 
             display: flex; flex-direction: column; 
         }
         .subject-header { padding: 15px; font-weight: 800; font-size: 16px; color: #00695c; border-bottom: 1px solid #b2dfdb; display: flex; justify-content: space-between; align-items: center; }
@@ -121,65 +120,107 @@
 
         /* --- Center Column --- */
         .center-feed { display: flex; flex-direction: column; gap: 20px; height: 100%; }
-        .hero-banner { 
-            background: #fff3e0; border-radius: 15px; height: 240px; 
-            display: flex; flex-direction: column; justify-content: center; align-items: center; 
-            text-align: center; border: 1px solid #ffe0b2; position: relative; overflow: hidden; flex-shrink: 0; 
+        
+        /* [수정] 배너 공통 스타일: 일관성 확보 */
+        .main-banner-card {
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
         }
-        .hero-bg-pattern { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(#ffcc80 1px, transparent 1px); background-size: 20px 20px; opacity: 0.2; }
-        .hero-content { position: relative; z-index: 1; }
-        .hero-tag { background: #ffcc80; color: #5d4037; padding: 5px 15px; border-radius: 20px; font-weight: 700; font-size: 14px; margin-bottom: 15px; display: inline-block; }
-        .hero-main-title { font-size: 32px; font-weight: 900; color: #3e2723; margin-bottom: 10px; line-height: 1.2; }
-        .hero-sub-title { font-size: 18px; color: #5d4037; font-weight: 600; }
+        .main-banner-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        /* 공통 텍스트 영역 */
+        .banner-text-group {
+            display: flex; flex-direction: column; align-items: flex-start; z-index: 2;
+        }
+        /* 공통 액션/아이콘 영역 */
+        .banner-action-group {
+            display: flex; flex-direction: column; align-items: center; z-index: 2;
+        }
+        /* 공통 CTA 버튼 */
+        .banner-cta-btn {
+            margin-top: 15px;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 800;
+            display: flex; align-items: center; gap: 5px;
+            background: rgba(255,255,255,0.9);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.2s;
+        }
+        .main-banner-card:hover .banner-cta-btn {
+            background: #fff;
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
 
+        /* 1. Hero Banner (상단: 문해력 향상 프로젝트) - Orange Theme */
+        .hero-banner { 
+            height: 240px; 
+            /* 부드러운 오렌지 그라디언트 + 완성도 높은 그림자 */
+            background: linear-gradient(120deg, #fff3e0 0%, #ffe0b2 100%);
+            border: 2px solid #fff; /* 깔끔한 테두리 */
+            box-shadow: 0 8px 20px rgba(239, 108, 0, 0.1);
+        }
+        .hero-banner .hero-bg-pattern {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(#ffcc80 15%, transparent 16%);
+            background-size: 24px 24px; opacity: 0.3; z-index: 1;
+        }
+        /* 기본 태그 (오렌지 테마) */
+        .hero-tag { 
+            background: #ef6c00; color: #fff; padding: 6px 14px; border-radius: 20px; 
+            font-weight: 700; font-size: 13px; margin-bottom: 12px; display: inline-block;
+            box-shadow: 0 2px 4px rgba(239, 108, 0, 0.3);
+        }
+        .hero-main-title { 
+            font-size: 34px; font-weight: 900; color: #3e2723; margin-bottom: 8px; line-height: 1.2; 
+        }
+        .hero-sub-title { font-size: 17px; color: #6d4c41; font-weight: 600; }
+        
+        /* Hero Icon Area */
+        .hero-icon-visual { font-size: 80px; filter: drop-shadow(0 4px 0 rgba(0,0,0,0.1)); transition: transform 0.3s; }
+        .hero-banner:hover .hero-icon-visual { transform: rotate(10deg) scale(1.1); }
+        .hero-cta { color: #ef6c00; }
+
+        /* 2. Diagnostic Banner (하단: 진단 검사) - Blue Theme */
+        /* [수정] 높이를 140px에서 200px로 증가하여 여백 확보 */
         .diagnostic-trigger-banner { 
-            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border: 3px dashed #1e7df0; 
-            border-radius: 15px; height: 140px; display: flex; align-items: center; justify-content: space-between; 
-            padding: 0 40px; cursor: pointer; position: relative; animation: pulse 2s infinite ease-in-out; 
-            box-shadow: 0 8px 20px rgba(30,125,240,0.15); transition: transform 0.2s; flex-shrink: 0; 
+            height: 200px; 
+            /* 부드러운 블루 그라디언트 */
+            background: linear-gradient(120deg, #e3f2fd 0%, #bbdefb 100%);
+            border: 2px solid #fff;
+            box-shadow: 0 8px 20px rgba(30, 125, 240, 0.1);
         }
-        .diagnostic-trigger-banner:hover { transform: scale(1.02); }
-        @keyframes pulse { 
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(30, 125, 240, 0.4); } 
-            50% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(30, 125, 240, 0); } 
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(30, 125, 240, 0); } 
+        /* 배경 장식 */
+        .diag-bg-circle {
+            position: absolute; right: -20px; bottom: -40px; width: 180px; height: 180px;
+            background: rgba(255,255,255,0.3); border-radius: 50%; z-index: 1;
         }
-        .diag-text-group { text-align: left; }
-        .diag-sub { font-size: 16px; color: #1565c0; font-weight: 700; margin-bottom: 5px; }
+
+        /* [요청 반영] 하단 배너 내부의 'NEW' 태그를 파란색으로 변경 */
+        .diagnostic-trigger-banner .hero-tag {
+            background: var(--primary-blue); /* #1e7df0 */
+            box-shadow: 0 2px 4px rgba(30, 125, 240, 0.3);
+        }
+
+        .diag-sub { font-size: 15px; color: #1565c0; font-weight: 700; margin-bottom: 5px; }
         .diag-title { font-size: 26px; font-weight: 900; color: #0d47a1; letter-spacing: -0.5px; }
         
-        .diag-icon-wrapper { 
-            position: relative; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center;
-            transform: translateY(-8px); 
-        }
-        .diag-icon { font-size: 50px; line-height: 1; }
-        
-        .diag-badge { 
-            background: #ff5252; color: white; font-weight: 800; 
-            padding: 5px 12px; border-radius: 20px; font-size: 13px; 
-            position: relative; 
-            margin-bottom: 8px; 
-            white-space: nowrap; 
-            box-shadow: 0 3px 6px rgba(255, 82, 82, 0.3);
-            z-index: 10;
-        }
-        
-        .diag-badge::after { 
-            content: ''; 
-            position: absolute; 
-            bottom: -5px; 
-            left: 50%; 
-            transform: translateX(-50%);
-            border-width: 6px 6px 0; 
-            border-style: solid; 
-            border-color: #ff5252 transparent; 
-            display: block; 
-            width: 0; 
-        }
+        /* Diagnostic Icon Area */
+        .diag-icon-visual { font-size: 55px; filter: drop-shadow(0 4px 0 rgba(0,0,0,0.1)); transition: transform 0.3s; }
+        .diagnostic-trigger-banner:hover .diag-icon-visual { transform: translateY(-5px); }
+        .diag-cta { color: #1565c0; }
+
 
         .bottom-banner-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: 120px; flex-shrink: 0; }
         .sub-banner { 
@@ -254,36 +295,27 @@
         .next-arrow { width: 50px; height: 50px; background: #444; color: white; border-radius: 12px; font-size: 20px; transition: 0.2s; }
         .next-arrow:hover { background: var(--primary-blue); }
 
-        /* [수정됨] 로딩 화면 CSS */
+        /* 로딩 화면 CSS */
         #loading-screen { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.95); z-index: 100; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
         
-        /* [수정] 로딩 화면 로봇 SVG 스타일 (CSS 변경) */
         .loading-icon {
-            width: 180px;  /* 너비 지정 */
-            height: 180px; /* 높이 지정 */
-            margin-bottom: 20px; /* 텍스트와의 간격 */
-            animation: robotBounce 0.8s infinite ease-in-out alternate; /* 둥실둥실 효과 */
+            width: 180px;  
+            height: 180px; 
+            margin-bottom: 20px; 
+            animation: robotBounce 0.8s infinite ease-in-out alternate; 
         }
-        /* SVG 내부 요소가 부모 크기에 맞도록 설정 */
-        .loading-icon svg {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-
-        /* [추가] 로봇 움직임 애니메이션 */
+        .loading-icon svg { width: 100%; height: 100%; display: block; }
         @keyframes robotBounce {
             0% { transform: translateY(0); }
             100% { transform: translateY(-15px); }
         }
         
-        /* [수정] 로딩바를 텍스트 아래로 내리고 마진 수정 */
         .loading-track {
             width: 320px;
             height: 16px;
             background-color: #eee;
             border-radius: 10px;
-            margin-top: 30px; /* 위쪽 여백 추가 */
+            margin-top: 30px; 
             margin-bottom: 0;
             overflow: hidden;
             box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
@@ -294,15 +326,8 @@
             height: 100%;
             background: linear-gradient(90deg, #1e7df0, #00b0ff);
             border-radius: 10px;
-            /* JS 애니메이션을 위한 기본 트랜지션 삭제 (애니메이션이 width 제어) */
         }
-        
-        /* [수정] 끊김 없이 매끄럽게 차오르는 애니메이션 */
-        .loading-bar.fill-animation {
-            animation: gaugeFill 2.5s linear forwards;
-        }
-
-        /* [수정] 중간 단계 제거하여 끊김 방지 */
+        .loading-bar.fill-animation { animation: gaugeFill 2.5s linear forwards; }
         @keyframes gaugeFill {
             0% { width: 0%; }
             100% { width: 100%; }
@@ -359,16 +384,12 @@
         }
         .tooltip-text.show { visibility: visible; opacity: 1; }
 
-        /* [수정됨] Grid 비율을 요청하신 픽셀(px)로 변경 */
-        /* 1200px (컨테이너) - 60px(패딩) - 30px(갭) = 1110px. 좌:780px, 우:330px */
+        /* Grid 비율 */
         .top-summary-container { display: grid; grid-template-columns: 780px 330px; gap: 30px; margin-bottom: 40px; }
         
-        /* [수정] 좌측 너비 설정 */
         .summary-left { display: flex; gap: 20px; background: #f8f9fb; padding: 25px; border-radius: 15px; align-items: center; width: 100%; }
-        /* [수정] 우측 너비 설정 */
         .summary-right { background: white; border: 1px solid #eee; border-radius: 15px; padding: 25px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 25px; width: 100%; }
         
-        /* [수정] 결과 변경 시 가로 너비 고정을 위해 width, flex-shrink 추가 */
         .donut-chart-wrap { text-align: center; margin-left: 5px; width: 220px; flex-shrink: 0; }
         .donut-chart-svg { width: 180px; height: 180px; transform: rotate(-90deg); }
         .donut-bg-ring { fill: none; stroke: #eee; stroke-width: 25; } 
@@ -382,7 +403,6 @@
         .legend-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 5px; }
         .legend-dot.my { background-color: var(--primary-blue); } .legend-dot.avg { background-color: #cce5ff; }
         
-        /* [수정] 오른쪽 박스 너비(330px)에 맞춰 게이지 차트 크기를 다시 220px로 복원 */
         .gauge-chart-wrap { width: 220px; height: 110px; position: relative; margin-bottom: 15px; }
         .gauge-svg { width: 100%; height: 100%; overflow: visible; }
         .gauge-bg-arc { fill: none; stroke: #f0f3f9; stroke-width: 24; stroke-linecap: round; }
@@ -395,49 +415,44 @@
         .gauge-main-label { font-size: 22px; font-weight: bold; color: #333; }
         .gauge-main-label .highlight-blue { font-size: 28px; }
         
-        /* [수정] 텍스트 영역 너비 유동적용 min-width: 0 추가 */
         .summary-text-wrap { width: 100%; flex: 1; min-width: 0; }
         .summary-title { font-size: 16px; margin-bottom: 15px; line-height: 1.6; color: var(--text-dark); text-align: center; word-break: keep-all; }
         
-        /* [수정] 텍스트 줄바꿈 방지 설정: white-space: nowrap 추가 */
         .summary-desc { 
             font-size: 14px; line-height: 1.6; color: #555; background: white; padding: 15px; border-radius: 10px; 
             word-break: keep-all; 
-            white-space: nowrap; /* 줄바꿈 금지 */
+            white-space: nowrap; 
         }
 
         .bottom-details-grid { display: grid; grid-template-columns: 1.9fr 1.1fr; gap: 30px; margin-bottom: 100px; }
         .graph-header { display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 20px; }
         .avg-legend { font-size: 12px; color: #666; font-weight: normal; display: flex; align-items: center; gap: 6px; background: none; padding: 0; align-self: flex-end; margin-top: 5px; }
         
-        /* [수정됨] 범례 아이콘: - O - 형태 (점선 + 중앙 원) */
         .avg-icon-visual { 
             width: 32px; 
             height: 0; 
             border-top: 3px dashed #aaccff; /* 점선 스타일 */
             display: inline-block; 
             vertical-align: middle;
-            position: relative; /* ::after 배치를 위한 기준 */
+            position: relative; 
             margin-right: 4px;
         }
         
-        /* [추가] 중앙에 동그라미 배치 */
         .avg-icon-visual::after { 
             content: '';
             display: block;
             width: 10px;
             height: 10px;
-            background-color: white; /* 내부 흰색 채움 */
-            border: 2px solid #aaccff; /* 테두리 색상 */
-            border-radius: 50%; /* 원형 */
+            background-color: white; 
+            border: 2px solid #aaccff; 
+            border-radius: 50%; 
             position: absolute;
-            top: -5px; /* 선 두께와 원 크기를 고려한 중앙 정렬 */
+            top: -5px; 
             left: 50%;
             transform: translateX(-50%);
             box-sizing: border-box;
         }
         
-        /* [수정 1] margin-bottom 75px -> 40px로 변경: 사용자의 요청에 따라 여백을 줄임 */
         .graph-container { display: flex; justify-content: space-around; align-items: flex-end; height: 200px; border-bottom: 1px solid #ddd; position: relative; padding-left: 30px; flex: 2; margin-bottom: 40px; }
         
         .y-axis-grid { position: absolute; left: 30px; right: 0; bottom: 0; top: 0; pointer-events: none; z-index: 0; }
@@ -457,11 +472,9 @@
         .graph-help-btn { display: inline-flex; width: 14px; height: 14px; background-color: #ddd; color: white; border-radius: 50%; justify-content: center; align-items: center; font-size: 10px; cursor: pointer; flex-shrink: 0; }
         .graph-help-btn:hover { background-color: #bbb; }
         
-        /* [수정] SVG 내부의 dot에 포인터 이벤트 활성화 */
         .svg-graph-layer { position: absolute; top: 0; left: 30px; right: 0; width: calc(100% - 30px); height: 100%; pointer-events: none; z-index: 2; }
         .avg-line { fill: none; stroke: #aaccff; stroke-width: 3px; stroke-dasharray: 6, 4; transition: all 1s ease; }
         
-        /* [수정] 평균 점수 Dot에 커서 포인터 및 이벤트 활성화 */
         .avg-dot { fill: #fff; stroke: #aaccff; stroke-width: 3px; r: 6; transition: cy 1s ease; pointer-events: auto; cursor: pointer; }
         .avg-dot:hover { stroke: var(--primary-blue); stroke-width: 4px; r: 8; }
         
@@ -472,7 +485,6 @@
         .insight-box { border: 1px solid #ddd; padding: 15px 20px; border-radius: 12px; text-align: center; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.05); height: 100%; display: flex; flex-direction: column; justify-content: center; }
         .insight-label { font-size: 14px; color: #888; margin-bottom: 5px; } 
         
-        /* [수정 2] 폰트 크기 18px -> 25px (약 140% 확대) */
         .insight-value { font-size: 25px; font-weight: bold; }
 
         .guide-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 40px; }
@@ -499,32 +511,21 @@
         .program-badge { font-size: 12px; margin-bottom: 10px; }
         .program-name { font-size: 18px; font-weight: bold; color: var(--text-dark); margin-bottom: 5px; }
         
-        /* [수정] 책 리스트 간격 및 책 표지 사이즈 수정 */
         .book-list { display: flex; gap: 30px; overflow-x: auto; width: 100%; padding-bottom: 5px; justify-content: center; }
         .book-item { flex: 0 0 110px; display: flex; flex-direction: column; align-items: center; gap: 5px; }
         
-        /* [수정] 퀄리티 높은 그림자와 라운딩 적용 */
         .book-cover { 
             width: 100px; height: 130px; 
-            /* 1. 더 둥글고 부드러운 모서리 */
             border-radius: 16px;
             overflow: hidden; 
             position: relative; 
-            
-            /* 2. 기존의 진한 그림자 제거 -> 부드럽고 넓게 퍼지는 그림자로 변경 */
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.03);
-            
-            /* 3. 아주 얇은 테두리로 깔끔함 더하기 */
             border: 1px solid rgba(0,0,0,0.04);
-            
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
-            background-color: #fff; /* 배경을 흰색으로 변경하여 이미지와 자연스럽게 어우러짐 */
-            
-            /* 렌더링 최적화 */
+            background-color: #fff; 
             transform: translateZ(0);
         }
         
-        /* 4. 마우스 오버 시 떠오르는 효과 및 은은한 파란색 그림자 */
         .book-cover:hover { 
             transform: translateY(-8px); 
             box-shadow: 0 15px 30px rgba(30, 125, 240, 0.15); 
@@ -532,26 +533,24 @@
 
         .book-cover img {
             width: 100%; height: 100%;
-            object-fit: cover; /* 이미지가 영역을 꽉 채우도록 */
+            object-fit: cover; 
             display: block;
         }
-        /* 기존 그라디언트 및 이모지 스타일은 더 이상 필요 없으므로 삭제하거나 무시 */
         .book-color-1, .book-color-2, .book-color-3, .book-color-4 { background: none; }
         .book-emoji { display: none; }
         
         .book-title-on-cover { font-size: 13px; line-height: 1.3; font-weight: 800; }
         .book-title { font-size: 12px; text-align: center; line-height: 1.3; margin-top: 5px; }
         
-        /* [수정] 버튼 리스트를 세로 3분할로 변경 */
         .btn-list { width: 100%; height: 100%; display: flex; flex-direction: column; gap: 10px; }
         .rec-btn { 
-            width: 100%; flex: 1; /* 높이 균등 분할 */
-            display: flex; justify-content: center; align-items: center; /* 내용 중앙 정렬 */
-            padding: 0 10px; /* 패딩 초기화 */
+            width: 100%; flex: 1; 
+            display: flex; justify-content: center; align-items: center; 
+            padding: 0 10px; 
             background: white; border: 1px solid #ddd; 
             color: #555; font-weight: 700; 
             border-radius: 8px; cursor: pointer; transition: 0.2s; 
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* 카드 느낌 그림자 */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
         }
         .rec-btn:hover { background: #f0f8ff; border-color: #1e7df0; color: #1e7df0; transform: translateY(-2px); }
     </style>
@@ -602,25 +601,45 @@
 
             <!-- Center Column: 메인 피드 -->
             <div class="center-feed">
-                <!-- Top: Hero Banner -->
-                <div class="hero-banner">
+                <!-- Top: Hero Banner (문해력 향상 프로젝트) -->
+                <div class="main-banner-card hero-banner" onclick="location.href='./contents/intro.html'">
                     <div class="hero-bg-pattern"></div>
-                    <div class="hero-content">
-                        <div class="hero-tag">단단하게 문해력 다지기</div>
+                    
+                    <!-- Left: 텍스트 정보 -->
+                    <div class="banner-text-group">
+                        <div class="hero-tag">NEW</div>
                         <div class="hero-main-title">엘리하이<br>문해력 향상 프로젝트</div>
-                        <div class="hero-sub-title">모든 학습의 밑바탕은 문해력!</div>
+                        <div class="hero-sub-title">오늘 8분 문해! 모든 학습의 밑바탕은 문해력!</div>
+                    </div>
+                    
+                    <!-- Right: 아이콘 & 액션 버튼 -->
+                    <div class="banner-action-group">
+                        <div class="hero-icon-visual">🏆</div>
+                        <!-- 우측 하단 Click/바로가기 버튼 -->
+                        <div class="banner-cta-btn hero-cta">
+                            프로젝트 보기 <span style="font-size: 16px;">▶</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Middle: Diagnostic Trigger -->
-                <div class="diagnostic-trigger-banner" onclick="startDiagnosticTest()">
-                    <div class="diag-text-group">
+                <!-- Middle: Diagnostic Trigger (M-KLT 진단 검사) -->
+                <div class="main-banner-card diagnostic-trigger-banner" onclick="startDiagnosticTest()">
+                    <div class="diag-bg-circle"></div>
+
+                    <!-- Left: 텍스트 정보 -->
+                    <div class="banner-text-group">
+                        <div class="hero-tag">NEW</div>
+                        <div class="diag-title">엘리하이<br>문해력 M-KLT 진단 검사</div>
                         <div class="diag-sub">초등 문해력, 정확한 진단으로 제대로 키우기</div>
-                        <div class="diag-title">엘리하이 <br> 문해력 M-KLT 진단 검사</div>
                     </div>
-                    <div class="diag-icon-wrapper">
-                        <div class="diag-badge">Click!</div>
-                        <div class="diag-icon">📝</div>
+                    
+                    <!-- Right: 아이콘 & 액션 버튼 -->
+                    <div class="banner-action-group">
+                        <div class="diag-icon-visual">📝</div>
+                        <!-- 우측 하단 Click/바로가기 버튼 -->
+                        <div class="banner-cta-btn diag-cta">
+                            검사 시작하기 <span style="font-size: 16px;">▶</span>
+                        </div>
                     </div>
                 </div>
 
@@ -702,7 +721,7 @@
             </svg>
         </div>
         
-        <div class="loading-text">결과 분석 중입니다...</div>
+        <div class="loading-text">결과 분석 중입니다.</div>
         <div class="loading-sub">AI가 <strong>[김엘리]님</strong>의 답안을 채점하고 있어요.</div>
         <div class="loading-track">
             <div class="loading-bar" id="loading-bar"></div>
