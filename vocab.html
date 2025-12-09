@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>어휘랑</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app-container">
+        <header id="app-header">
+            <div class="logo"><span>오늘 8분 문해</span> [응용]</div>
+
+            <div style="display: flex; align-items: center;">
+               <div class="close-app-btn" onclick="goMain()">
+                   <i data-lucide="x" size="28"></i>
+               </div>
+            </div>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-btn tab-vocab active" onclick="location.href='vocab.html'"><i data-lucide="lightbulb" size="18"></i> 어휘랑</button>
+            <button class="tab-btn tab-read" onclick="location.href='read.html'"><i data-lucide="book-open" size="18"></i> 읽기랑</button>
+            <button class="tab-btn tab-structure" onclick="location.href='structure.html'"><i data-lucide="layout" size="18"></i> 구조랑</button>
+            <button class="tab-btn tab-write" onclick="location.href='write.html'"><i data-lucide="pen-tool" size="18"></i> 쓰기랑</button>
+        </div>
+
+        <div class="content-area">
+            <div id="vocab-screen" class="screen active">
+                
+                <div id="vocab-step-0" class="vocab-step" style="height: 100%; display: flex; flex-direction: column;">
+                    <div class="center-wrapper">
+                        <div class="instruction-banner"><span>빈칸을 눌러 오늘의 어휘를 알아봅시다.</span></div>
+                        
+                        <div class="vocab-container" id="vocab-cards-container">
+                            <div class="vocab-wrapper" style="position: relative; width: 100%; max-width: 900px; display: flex; flex-direction: column; align-items: center;">
+                                
+                                <div class="header-star-wrapper">
+                                    <img src="imgs/star_off.png" id="header-star-1" class="header-star-img">
+                                    <img src="imgs/star_off.png" id="header-star-2" class="header-star-img">
+                                </div>
+
+                                <div class="vocab-card" id="vocab-card-1">
+                                    <button class="vocab-next-arrow" onclick="nextVocabCard()"><i data-lucide="chevron-right"></i></button>
+                                    <div class="vocab-main-title">가치</div>
+                                    <div class="hanja-box">
+                                        <div class="hanja-item"><span>價</span><div class="hanja-reveal" onclick="reveal(this, '값 가', 1, 'audio/audio_2.mp3')">?</div></div>
+                                        <div style="font-size: 32px; color: #9ca3af;">+</div>
+                                        <div class="hanja-item"><span>値</span><div class="hanja-reveal" onclick="reveal(this, '값 치', 1, 'audio/audio_3.mp3')">?</div></div>
+                                    </div>
+                                    <div class="vocab-bottom-layout">
+                                        <div class="vocab-img-placeholder"><img src="imgs/vocab1.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+                                        <div class="vocab-text-area">
+                                            <div class="vocab-row">
+                                                <div class="vocab-label">뜻</div>
+                                                <div class="vocab-desc">
+                                                    <span>사물이 지니고 있는 쓸모.</span>
+                                                    <img src="imgs/speaker.png" class="speaker-img-btn" onclick="playAudio('audio/audio_4.mp3')" alt="듣기">
+                                                </div>
+                                            </div>
+                                            <div class="vocab-row">
+                                                <div class="vocab-label ex">예문</div>
+                                                <div class="vocab-desc">
+                                                    <span>이 그림은 역사적 <span class="highlight-word">가치</span>가 높다.</span>
+                                                    <img src="imgs/speaker.png" class="speaker-img-btn" onclick="playAudio('audio/audio_5.mp3')" alt="듣기">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="vocab-card" id="vocab-card-2" style="display: none;">
+                                    <button class="vocab-prev-arrow" onclick="prevVocabCard()"><i data-lucide="chevron-left"></i></button>
+                                    <div class="vocab-main-title">보존</div>
+                                    <div class="hanja-box">
+                                        <div class="hanja-item"><span>保</span><div class="hanja-reveal" onclick="reveal(this, '지킬 보', 2, 'audio/audio_7.mp3')">?</div></div>
+                                        <div style="font-size: 32px; color: #9ca3af;">+</div>
+                                        <div class="hanja-item"><span>存</span><div class="hanja-reveal" onclick="reveal(this, '존재할 존', 2, 'audio/audio_8.mp3')">?</div></div>
+                                    </div>
+                                    <div class="vocab-bottom-layout">
+                                        <div class="vocab-img-placeholder"><img src="imgs/vocab2.png" style="width:100%; height:100%; object-fit:cover;"></div>
+                                        <div class="vocab-text-area">
+                                            <div class="vocab-row">
+                                                <div class="vocab-label">뜻</div>
+                                                <div class="vocab-desc">
+                                                    <span><span class="highlight-yellow">잘 보호하고 간수하여</span> 남김.</span>
+                                                    <img src="imgs/speaker.png" class="speaker-img-btn" onclick="playAudio('audio/audio_9.mp3')" alt="듣기">
+                                                </div>
+                                            </div>
+                                            <div class="vocab-row">
+                                                <div class="vocab-label ex">예문</div>
+                                                <div class="vocab-desc">
+                                                    <span>우리 문화의 <span class="highlight-word">보존</span>에 힘 써야 한다.</span>
+                                                    <img src="imgs/speaker.png" class="speaker-img-btn" onclick="playAudio('audio/audio_10.mp3')" alt="듣기">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="vocab-done-container" class="done-btn-container" style="display:none;">
+                                    <button id="vocab-done-btn" class="writing-done-btn" disabled onclick="changeStep(1)">게임하러 가기</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="vocab-step-1" class="step-screen" style="display:none;">
+                    <div class="game-layout">
+                        <div class="instruction-banner">
+                            <span>빈칸에 들어갈 알맞은 어휘를 눌러 문장을 완성해 봅시다.</span>
+                        </div>
+                        <div class="scene-container">
+                            <div class="white-mask"></div>
+                            <div id="quiz-text-overlay">
+                                <div class="quiz-sentence">
+                                    이 그림은 역사적
+                                    <span id="answer-text" data-correct-answer="가치"><span class="blank-box">?</span></span><span id="quiz-josa">이/가</span> 높다.
+                                </div>
+                            </div>
+                            
+                            <img id="learner" src="imgs/learner_default.png" alt="학습자" onerror="this.src='https://placehold.co/200x300?text=Learner'">
+                            <img id="monster" src="imgs/monster_default.png" alt="몬스터" onerror="this.src='https://placehold.co/200x300?text=Monster'">
+                            <img id="effect" src="imgs/effect_learner.png" alt="이펙트" style="opacity:0;">
+
+                            <div id="option-wrapper"> 
+                                <button class="option-item" data-choice="가치" id="option-가치">
+                                    <strong>가치</strong>
+                                </button>
+                                <button class="option-item" data-choice="보존" id="option-보존">
+                               <strong>보존</strong>
+                                </button>
+                                <button class="option-item" data-choice="문화유산" id="option-문화유산">
+                                 <strong>문화유산</strong>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> </div>
+
+        <div class="nav-controls">
+            <button class="nav-btn" id="prev-btn" onclick="changeStep(-1)">
+                <i data-lucide="chevron-left" color="#374151" size="32"></i>
+            </button>
+            <div class="dots-indicator" id="dots-container"></div>
+            <button class="nav-btn" id="next-btn" onclick="changeStep(1)" disabled>
+                <i data-lucide="chevron-right" color="#374151" size="32"></i>
+            </button>
+        </div>
+
+        <img id="stamp-complete" src="imgs/stamp_best.png" alt="칭찬 도장">
+        <img id="finger-guide" src="imgs/finger_guide.png" alt="손가락 가이드">
+    </div>
+
+    <audio id="audio-intro" src="audio/intro.mp3"></audio>
+    <audio id="audio-correct" src="audio/correct.mp3"></audio>
+    <audio id="audio-wrong" src="audio/wrong.mp3"></audio>
+    <audio id="audio-click-correct" src="audio/clickcorrect.mp3"></audio>
+    <audio id="audio-click-wrong" src="audio/clickwrong.mp3"></audio>
+    <audio id="audio-complete" src="audio/complete.mp3"></audio>
+
+    <audio id="guide-audio"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
