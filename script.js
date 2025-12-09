@@ -78,7 +78,7 @@ function playPageGuide(stepIdx) {
             audioEl.play().catch(e => console.log("자동 재생 차단됨(사용자 클릭 필요):", e));
         }
     }
-}
+} 
 
 // [설정] vocab: 2단계 (카드 -> 게임)
 const pageConfig = {
