@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>학습 완료</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="is-outro">
+    <div id="app-container">
+        <div class="content-area">
+            <div id="outro-screen" class="screen outro-bg">
+                <div class="outro-icon">🎉</div>
+                <div class="outro-title">참 잘했어요!</div>
+                <div class="outro-desc">오늘의 학습을 모두 완료했습니다.</div>
+<div class="outro-btn-group">
+    <button class="replay-btn exit-btn" onclick="location.href='../main.html'">
+        <i data-lucide="home" size="24"></i> 학습 종료하기
+    </button>
+    
+    <button class="replay-btn retry-btn" onclick="location.href='intro.html'">
+        <i data-lucide="rotate-ccw" size="24"></i> 다시 학습하기
+    </button>
+</div>
+            </div>
+        </div>
+    </div>
+    <audio id="guide-audio"></audio>
+    <script src="script.js"></script>
+</body>
+</html>
