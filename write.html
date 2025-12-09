@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쓰기랑 - 메가스터디 초등 문해력</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="app-container">
+        <header id="app-header">
+            <div class="logo"><span>오늘 8분 문해</span> [응용]</div>
+            <div style="display: flex; align-items: center;">
+               <div class="close-app-btn" onclick="goMain()">
+                   <i data-lucide="x" size="28"></i>
+               </div>
+            </div>
+        </header>
+
+        <div id="app-tabs" class="tabs">
+            <button class="tab-btn tab-vocab" onclick="location.href='vocab.html'"><i data-lucide="lightbulb" size="18"></i> 어휘랑</button>
+            <button class="tab-btn tab-read" onclick="location.href='read.html'"><i data-lucide="book-open" size="18"></i> 읽기랑</button>
+            <button class="tab-btn tab-structure" onclick="location.href='structure.html'"><i data-lucide="layout" size="18"></i> 구조랑</button>
+            <button class="tab-btn tab-write active" onclick="location.href='write.html'"><i data-lucide="pen-tool" size="18"></i> 쓰기랑</button>
+        </div>
+
+        <div class="content-area">
+            <div id="write-screen" class="screen">
+                <div class="center-wrapper">
+                    <div class="instruction-banner">
+                        <span>「역사를 품은 기와, 경복이」의 주제를 한 문장으로 써 봅시다.</span>
+                    </div>
+                    
+                    <div class="writing-container">
+                        <div class="writing-layout-box">
+                            <div class="writing-card">
+                                <textarea class="writing-input" 
+                                    placeholder="'경복이’와 ‘궁이’가 상징하는 것을 생각하며, 이야기의 주제를 써 보세요." 
+                                    oninput="checkWriting(this)"></textarea>
+                            </div>
+<div class="writing-side-buttons">
+    <button class="circle-btn orange" onclick="openModal('fulltext')" title="글 전문 보기">
+        <img src="imgs/book.png" alt="책 아이콘">
+    </button>
+
+    <button class="circle-btn green" onclick="openModal('example')" title="예시 답안">
+        <img src="imgs/hint.png" alt="전구 아이콘" onerror="this.style.display='none'; this.parentNode.innerHTML='💡'">
+    </button>
+</div>
+                        </div>
+                        
+                        <div class="done-btn-container">
+                            <button id="write-done-btn" class="writing-done-btn" disabled onclick="finishWriting()">다 했어요</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-overlay" id="text-modal">
+            <div class="modal-box">
+                <button class="close-modal" onclick="closeModal('text-modal')">×</button>
+                <h3>전문 보기</h3>
+                <div style="font-size:18px; line-height:1.8; text-align:left; color:#333;">
+                    <p>북악산 아래 자리 잡은 조선의 궁궐, 경복궁은 수백 년 동안 바람과 햇살을 맞으며 조용히 그 자리를 지켜 왔다. 궁궐의 기와들은 각자 자신의 이야기를 품은 듯 은은하게 반짝였다.</p>
+                    <p>(중략)</p>
+                    <p>“왕조는 수백 년 전에 끝났지만, 우리 궁궐이 지닌 가치와 역사는 아직도 소중하게 보존되고 있어요. 지금은 궁궐이 모든 사람에게 열려 있어서 이렇게 문화를 즐기기 오기도 하고요. 우리가 문화유산을 잘 지켜 온 덕분이죠!”</p>
+                    <p>궁궐의 가치를 알아 주는 사람이 있다는 말에 경복이의 가슴이 두근거렸다.</p>
+                    <p>‘오랜 잠에서 깨어 보니 세상이 많이 변했구나. 시간이 흘러도 우리의 가치를 알아 주는 이들이 있다니……. 우리 궁궐의 가치가 오래 이어질 수 있도록 소중히 지켜야겠어.’</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-overlay" id="example-modal">
+            <div class="modal-box">
+                <button class="close-modal" onclick="closeModal('example-modal')">×</button>
+                <h3>예시 답안</h3>
+                <div style="background:#fce7f3; padding:30px; border-radius:20px; font-size:22px; font-weight:bold; color:#be185d; line-height:1.6;">
+                    시간이 흘러도 문화유산의 가치는 변하지 않으며, 우리가 소중히 지켜 나가야 한다.
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-controls">
+            <button class="nav-btn" id="prev-btn" onclick="changeStep(-1)"><i data-lucide="chevron-left" color="#374151" size="32"></i></button>
+            <div class="dots-indicator" id="dots-container"></div>
+            <button class="nav-btn" id="next-btn" onclick="changeStep(1)" disabled><i data-lucide="chevron-right" color="#374151" size="32"></i></button>
+        </div>
+    </div>
+   
+    <audio id="guide-audio"></audio>
+    <script src="script.js"></script>
+</body>
+</html>
