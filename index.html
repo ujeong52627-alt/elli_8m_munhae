@@ -38,6 +38,7 @@
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #f1f1f1; }
         ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #aaa; }
 
         /* =========================================
            2. 레이아웃 (Layout)
@@ -92,12 +93,10 @@
            4. 메인 화면 (New Dashboard Layout)
            ========================================= */
         #main-screen { flex: 1; background-color: #f5f6f8; padding: 20px; overflow-y: auto; }
-        /* [수정] 그리드 전체 높이 증가 (540px -> 600px) */
         .dashboard-grid { display: grid; grid-template-columns: 200px 1fr 320px; gap: 20px; height: 600px; }
 
         /* --- Left Column --- */
         .left-sidebar { display: flex; flex-direction: column; gap: 20px; height: 100%; }
-        /* [수정] 좌측 메뉴 박스 높이 증가 (400px -> 460px) */
         .subject-menu-box { 
             background: #e0f2f1; border-radius: 12px; overflow: hidden; border: 1px solid #b2dfdb; height: 460px; 
             display: flex; flex-direction: column; 
@@ -121,7 +120,6 @@
         /* --- Center Column --- */
         .center-feed { display: flex; flex-direction: column; gap: 20px; height: 100%; }
         
-        /* [수정] 배너 공통 스타일: 일관성 확보 */
         .main-banner-card {
             border-radius: 16px;
             overflow: hidden;
@@ -137,15 +135,12 @@
             transform: translateY(-4px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
-        /* 공통 텍스트 영역 */
         .banner-text-group {
             display: flex; flex-direction: column; align-items: flex-start; z-index: 2;
         }
-        /* 공통 액션/아이콘 영역 */
         .banner-action-group {
             display: flex; flex-direction: column; align-items: center; z-index: 2;
         }
-        /* 공통 CTA 버튼 */
         .banner-cta-btn {
             margin-top: 15px;
             padding: 8px 20px;
@@ -163,12 +158,11 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
 
-        /* 1. Hero Banner (상단: 문해력 향상 프로젝트) - Orange Theme */
+        /* 1. Hero Banner */
         .hero-banner { 
             height: 240px; 
-            /* 부드러운 오렌지 그라디언트 + 완성도 높은 그림자 */
             background: linear-gradient(120deg, #fff3e0 0%, #ffe0b2 100%);
-            border: 2px solid #fff; /* 깔끔한 테두리 */
+            border: 2px solid #fff;
             box-shadow: 0 8px 20px rgba(239, 108, 0, 0.1);
         }
         .hero-banner .hero-bg-pattern {
@@ -176,7 +170,6 @@
             background-image: radial-gradient(#ffcc80 15%, transparent 16%);
             background-size: 24px 24px; opacity: 0.3; z-index: 1;
         }
-        /* 기본 태그 (오렌지 테마) */
         .hero-tag { 
             background: #ef6c00; color: #fff; padding: 6px 14px; border-radius: 20px; 
             font-weight: 700; font-size: 13px; margin-bottom: 12px; display: inline-block;
@@ -186,41 +179,30 @@
             font-size: 34px; font-weight: 900; color: #3e2723; margin-bottom: 8px; line-height: 1.2; 
         }
         .hero-sub-title { font-size: 17px; color: #6d4c41; font-weight: 600; }
-        
-        /* Hero Icon Area */
         .hero-icon-visual { font-size: 80px; filter: drop-shadow(0 4px 0 rgba(0,0,0,0.1)); transition: transform 0.3s; }
         .hero-banner:hover .hero-icon-visual { transform: rotate(10deg) scale(1.1); }
         .hero-cta { color: #ef6c00; }
 
-        /* 2. Diagnostic Banner (하단: 진단 검사) - Blue Theme */
-        /* [수정] 높이를 140px에서 200px로 증가하여 여백 확보 */
+        /* 2. Diagnostic Banner */
         .diagnostic-trigger-banner { 
             height: 200px; 
-            /* 부드러운 블루 그라디언트 */
             background: linear-gradient(120deg, #e3f2fd 0%, #bbdefb 100%);
             border: 2px solid #fff;
             box-shadow: 0 8px 20px rgba(30, 125, 240, 0.1);
         }
-        /* 배경 장식 */
         .diag-bg-circle {
             position: absolute; right: -20px; bottom: -40px; width: 180px; height: 180px;
             background: rgba(255,255,255,0.3); border-radius: 50%; z-index: 1;
         }
-
-        /* [요청 반영] 하단 배너 내부의 'NEW' 태그를 파란색으로 변경 */
         .diagnostic-trigger-banner .hero-tag {
-            background: var(--primary-blue); /* #1e7df0 */
+            background: var(--primary-blue);
             box-shadow: 0 2px 4px rgba(30, 125, 240, 0.3);
         }
-
         .diag-sub { font-size: 15px; color: #1565c0; font-weight: 700; margin-bottom: 5px; }
         .diag-title { font-size: 26px; font-weight: 900; color: #0d47a1; letter-spacing: -0.5px; }
-        
-        /* Diagnostic Icon Area */
         .diag-icon-visual { font-size: 55px; filter: drop-shadow(0 4px 0 rgba(0,0,0,0.1)); transition: transform 0.3s; }
         .diagnostic-trigger-banner:hover .diag-icon-visual { transform: translateY(-5px); }
         .diag-cta { color: #1565c0; }
-
 
         .bottom-banner-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: 120px; flex-shrink: 0; }
         .sub-banner { 
@@ -252,92 +234,228 @@
         }
         .app-card:hover { transform: scale(1.05); z-index: 2; }
         
-        /* Helper Classes for Colors */
         .bg-lime { background: var(--b-lime); color: #558b2f; } .bg-purple { background: var(--b-purple); color: #6a1b9a; }
         .bg-sky { background: var(--b-sky); color: #0277bd; } .bg-brown { background: var(--b-brown); color: #4e342e; }
         .bg-teal { background: var(--b-teal); color: #00695c; } .bg-gold { background: var(--b-gold); color: #ff6f00; }
 
         /* =========================================
-           5. 퀴즈 / 결과 / 로딩 화면
+           5. 퀴즈 화면 (개선된 UI)
            ========================================= */
-        #quiz-screen, #loading-screen, #result-screen { display: none; height: 100%; }
+        #quiz-screen { 
+            display: none; height: 100%; 
+            flex-direction: column; background: #fff;
+        }
         
-        #quiz-screen { padding: 40px; flex-direction: column; }
-        .quiz-top-bar { display: flex; gap: 10px; margin-bottom: 30px; border-bottom: 2px solid #eee; padding-bottom: 15px; }
-        .quiz-area-indicator { padding: 8px 20px; border-radius: 30px; font-size: 16px; font-weight: 700; color: #aaa; background-color: #eee; transition: all 0.3s; }
-        .quiz-area-indicator.active { background-color: var(--primary-blue); color: white; box-shadow: 0 4px 10px rgba(30,125,240,0.3); }
+        /* 5-1. Quiz Header */
+        .quiz-header {
+            height: 80px; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 40px; border-bottom: 1px solid #eee;
+            background: #fff;
+        }
+        .quiz-title-area { display: flex; align-items: center; gap: 15px; }
+        .quiz-title-logo { font-size: 14px; font-weight: 900; color: var(--primary-blue); background: #e3f2fd; padding: 5px 12px; border-radius: 20px; }
+        .quiz-main-title { font-size: 20px; font-weight: 800; color: #333; }
+        
+        .quiz-progress-wrap { display: flex; align-items: center; gap: 10px; margin-left: 20px; }
+        .progress-pill {
+            display: flex; align-items: center; gap: 8px;
+            padding: 8px 16px; border-radius: 24px; background: #f5f5f5; color: #aaa;
+            font-size: 14px; font-weight: 700; transition: all 0.3s;
+        }
+        .progress-pill.active { background: #e3f2fd; color: var(--primary-blue); }
+        .progress-pill i { font-style: normal; font-size: 16px; }
 
-        .question-step { display: none; flex: 1; flex-direction: column; justify-content: center; animation: fadeIn 0.5s; }
+        /* 5-2. Quiz Body */
+        .quiz-body { flex: 1; padding: 0; overflow: hidden; display: flex; background: #f9f9fb; }
+        .question-step { display: none; width: 100%; height: 100%; flex-direction: column; animation: fadeIn 0.4s ease-out; }
         .question-step.active { display: flex; }
-        .question-title { font-size: 22px; font-weight: 700; margin-bottom: 30px; color: var(--text-dark); display: flex; align-items: center; }
-        .q-number-badge { background: #ff5252; color: white; width: 28px; height: 28px; border-radius: 50%; display: inline-flex; justify-content: center; align-items: center; font-weight: bold; font-size: 16px; margin-right: 10px; }
         
-        .example-box { border: 2px solid #eee; border-radius: 15px; padding: 40px; text-align: center; margin-bottom: 50px; background: #fafafa; position: relative; }
-        .example-box::before { content: "<보기>"; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: white; padding: 0 10px; color: var(--text-gray); font-size: 14px; }
-        .example-text { font-size: 20px; line-height: 1.8; color: #444; }
-        
-        .answer-row { display: flex; justify-content: center; gap: 20px; }
-        .answer-btn { width: 160px; height: 64px; border: 1px solid #ddd; border-radius: 32px; background: white; font-size: 18px; font-weight: 700; color: #555; transition: all 0.2s; }
-        .answer-btn:hover { border-color: var(--primary-blue); color: var(--primary-blue); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(30,125,240,0.1); }
-        .answer-btn.selected { background-color: var(--primary-blue); color: white; border-color: var(--primary-blue); }
-
-        .split-layout { display: flex; gap: 40px; height: 450px; }
-        .passage-area { flex: 1; border: 1px solid #ddd; padding: 25px; border-radius: 12px; overflow-y: auto; background: #fdfdfd; font-size: 16px; line-height: 1.8; color: #333; }
-        .question-area { flex: 1; display: flex; flex-direction: column; justify-content: center; }
-        .choice-list { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; }
-        .choice-btn { width: 100%; padding: 18px; border: 1px solid #ddd; border-radius: 12px; background: white; text-align: left; font-size: 16px; transition: 0.2s; }
-        .choice-btn:hover { background: #f0f8ff; border-color: var(--primary-blue); }
-        .choice-btn.selected { background: var(--primary-blue); color: white; border-color: var(--primary-blue); }
-
-        .quiz-footer { margin-top: auto; display: flex; justify-content: center; align-items: center; position: relative; height: 60px; border-top: 1px solid #f5f5f5; }
-        .progress-text { font-weight: bold; color: var(--text-gray); }
-        .next-btn-area { position: absolute; right: 0; top: 50%; transform: translateY(-50%); }
-        .next-arrow { width: 50px; height: 50px; background: #444; color: white; border-radius: 12px; font-size: 20px; transition: 0.2s; }
-        .next-arrow:hover { background: var(--primary-blue); }
-
-        /* 로딩 화면 CSS */
-        #loading-screen { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.95); z-index: 100; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-        
-        .loading-icon {
-            width: 180px;  
-            height: 180px; 
-            margin-bottom: 20px; 
-            animation: robotBounce 0.8s infinite ease-in-out alternate; 
+        /* [Type 1] Center Layout (For Vocab) */
+        .center-layout-container {
+            width: 100%; max-width: 900px; margin: 0 auto;
+            display: flex; flex-direction: column; justify-content: center; height: 100%;
+            padding: 40px; padding-bottom: 100px; /* 푸터 여백 확보 */
         }
+        .q-badge {
+            align-self: flex-start;
+            background: #333; color: #fff; font-size: 13px; font-weight: 700;
+            padding: 4px 10px; border-radius: 6px; margin-bottom: 15px;
+            display: inline-flex; align-items: center; gap: 5px;
+        }
+        .q-text-large { font-size: 28px; font-weight: 800; color: #222; margin-bottom: 40px; line-height: 1.4; }
+        
+        .vocab-box-wrapper {
+            background: #fff; border: 2px solid #333; border-radius: 20px;
+            padding: 60px 50px 50px 50px; text-align: center; margin-bottom: 50px;
+            position: relative; box-shadow: 8px 8px 0 rgba(0,0,0,0.1);
+            overflow: visible; /* 라벨이 박스 밖으로 나갈 수 있게 수정 */
+        }
+        .vocab-box-wrapper::before { display: none; }
+        
+        /* [수정] 보기 라벨 스타일 (Solid Black Icon Style) */
+        .vocab-label-badge {
+            position: absolute;
+            top: -16px;
+            left: 30px; 
+            transform: none; 
+            background: #333; /* Solid filled background */
+            color: #fff; /* White text */
+            border: 2px solid #333;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .vocab-sentence { font-size: 26px; font-weight: 500; color: #333; white-space: nowrap; }
+        .vocab-blank { 
+            display: inline-block; width: 100px; border-bottom: 3px solid var(--primary-blue); 
+            text-align: center; color: var(--primary-blue); font-weight: bold; margin: 0 10px;
+        }
+        
+        .answer-grid { 
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; 
+            max-width: 600px; margin: 0 auto; width: 100%;
+        }
+        .answer-card-btn {
+            background: #fff; border: 1px solid #ddd; border-radius: 16px;
+            height: 80px; font-size: 20px; font-weight: 700; color: #555;
+            display: flex; justify-content: center; align-items: center;
+            cursor: pointer; transition: all 0.2s; position: relative;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .answer-card-btn:hover { transform: translateY(-3px); border-color: var(--primary-blue); color: var(--primary-blue); }
+        .answer-card-btn.selected { 
+            background: #e3f2fd; border: 2px solid var(--primary-blue); color: var(--primary-blue); 
+            box-shadow: 0 0 0 4px rgba(30,125,240,0.1);
+        }
+        
+        /* [Type 2] Split Layout (For Reading) */
+        .split-layout-container { display: flex; width: 100%; height: 100%; }
+        
+        /* [수정] Left: Passage Viewer - 프레임 제거 및 통짜 레이아웃 */
+        .passage-viewer {
+            flex: 6; 
+            /* 회색 배경(#eee) 제거하고 흰색(#fff)으로 변경 */
+            background: #fff; 
+            /* 내부 패딩 제거 (passage-paper가 전체 차지) */
+            padding: 0; 
+            overflow: auto; /* 여기서 스크롤 처리 */
+            display: block; 
+            border-right: 1px solid #ddd; /* 오른쪽 영역과 구분선 */
+        }
+        
+        /* [수정] Paper 스타일을 전체 채움 형태로 변경 */
+        .passage-paper {
+            width: 100%; 
+            max-width: none; /* 최대 너비 제한 해제 */
+            background: transparent;
+            padding: 50px 60px; 
+            box-shadow: none; /* 그림자 프레임 제거 */
+            min-height: auto; 
+            font-size: 17px; line-height: 1.9; color: #444;
+            position: relative;
+            /* [수정] 하단 여백 추가 (지문 마지막 문장 아래 넉넉히 확보) */
+            padding-bottom: 180px; 
+        }
+        /* 책 엮임(스프링) 효과 제거 */
+        .passage-paper::before { display: none; }
+
+        .passage-title {
+            font-size: 22px; font-weight: 800; color: #222;
+            padding-bottom: 20px; margin-bottom: 25px; border-bottom: 2px solid #333;
+            text-align: center;
+        }
+        .p-indent { text-indent: 1em; margin-bottom: 1em; text-align: justify; }
+        .highlight-word { background: linear-gradient(to top, #fff9c4 40%, transparent 40%); font-weight: 700; }
+        
+        /* Right: Problem Solver */
+        .problem-solver {
+            flex: 4; background: #fff; 
+            /* border-left는 passage-viewer의 border-right로 대체하거나 유지 */
+            padding: 40px 40px 120px 40px; /* Bottom padding for fixed footer */
+            display: flex; flex-direction: column; overflow-y: auto; position: relative;
+        }
+        .prob-header { margin-bottom: 30px; }
+        .prob-q-text { font-size: 22px; font-weight: 700; color: #222; line-height: 1.4; margin-top: 10px; }
+        
+        .choice-stack { display: flex; flex-direction: column; gap: 12px; }
+        .choice-row-btn {
+            width: 100%; padding: 16px 20px;
+            border: 1px solid #e0e0e0; border-radius: 12px;
+            background: #fff; text-align: left;
+            font-size: 16px; color: #555; font-weight: 500;
+            cursor: pointer; transition: all 0.2s;
+            display: flex; align-items: center; gap: 12px;
+        }
+        .choice-num {
+            width: 28px; height: 28px; border-radius: 50%; border: 1px solid #ccc;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 14px; font-weight: 700; color: #999; flex-shrink: 0; transition: 0.2s;
+        }
+        .choice-row-btn:hover { background: #f8fbff; border-color: var(--primary-blue); }
+        .choice-row-btn:hover .choice-num { border-color: var(--primary-blue); color: var(--primary-blue); }
+        
+        .choice-row-btn.selected { 
+            background: #e3f2fd; border-color: var(--primary-blue); color: var(--primary-blue); font-weight: 700; 
+        }
+        .choice-row-btn.selected .choice-num {
+            background: var(--primary-blue); color: #fff; border-color: var(--primary-blue);
+        }
+
+        /* 5-3. Quiz Footer (Floating) */
+        .quiz-footer {
+            height: 80px; 
+            background: rgba(255, 255, 255, 0.85); /* 반투명 배경 */
+            backdrop-filter: blur(10px); 
+            border-top: 1px solid rgba(0,0,0,0.05); 
+            display: flex; align-items: center; justify-content: center;
+            position: absolute; bottom: 0; width: 100%;
+            padding: 0 40px;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.03); 
+            z-index: 10;
+        }
+        
+        .next-btn-pill {
+            background: #333; color: #fff;
+            /* [수정] 버튼 가로 너비 줄임 (텍스트+아이콘 감쌀 정도) */
+            padding: 12px 30px; 
+            border-radius: 30px;
+            font-size: 16px; font-weight: 700;
+            display: flex; align-items: center; gap: 10px;
+            transition: all 0.2s; box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        .next-btn-pill:hover { background: var(--primary-blue); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(30,125,240,0.3); }
+        .next-btn-pill span { font-size: 14px; opacity: 0.8; display: flex; align-items: center; } 
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* =========================================
+           6. 로딩 및 결과 화면
+           ========================================= */
+        #loading-screen { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.95); z-index: 100; flex-direction: column; justify-content: center; align-items: center; text-align: center; display: none; }
+        
+        .loading-icon { width: 180px; height: 180px; margin-bottom: 20px; animation: robotBounce 0.8s infinite ease-in-out alternate; }
         .loading-icon svg { width: 100%; height: 100%; display: block; }
-        @keyframes robotBounce {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-15px); }
-        }
+        @keyframes robotBounce { 0% { transform: translateY(0); } 100% { transform: translateY(-15px); } }
         
-        .loading-track {
-            width: 320px;
-            height: 16px;
-            background-color: #eee;
-            border-radius: 10px;
-            margin-top: 30px; 
-            margin-bottom: 0;
-            overflow: hidden;
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
-        }
-        
-        .loading-bar {
-            width: 0%;
-            height: 100%;
-            background: linear-gradient(90deg, #1e7df0, #00b0ff);
-            border-radius: 10px;
-        }
+        .loading-track { width: 320px; height: 16px; background-color: #eee; border-radius: 10px; margin-top: 30px; margin-bottom: 0; overflow: hidden; box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); }
+        .loading-bar { width: 0%; height: 100%; background: linear-gradient(90deg, #1e7df0, #00b0ff); border-radius: 10px; }
         .loading-bar.fill-animation { animation: gaugeFill 2.5s linear forwards; }
-        @keyframes gaugeFill {
-            0% { width: 0%; }
-            100% { width: 100%; }
-        }
+        @keyframes gaugeFill { 0% { width: 0%; } 100% { width: 100%; } }
 
         .loading-text { font-size: 18px; font-weight: 700; color: var(--text-dark); }
         .loading-sub { font-size: 18px; color: var(--text-gray); margin-top: 5px; }
 
         /* 결과 리포트 CSS */
-        #result-screen { padding: 30px; overflow-y: auto; padding-bottom: 50px; animation: slideUp 0.8s ease-out; }
+        #result-screen { padding: 30px; overflow-y: auto; padding-bottom: 50px; animation: slideUp 0.8s ease-out; display: none; }
         @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         
         .header-res { display: flex; justify-content: center; align-items: center; margin-bottom: 30px; background-color: var(--title-bg); padding: 15px; border-radius: 12px; position: relative; }
@@ -369,24 +487,18 @@
         .tooltip-text { 
             visibility: hidden; width: 200px; background-color: rgba(30, 30, 30, 0.95); color: #fff; text-align: center; 
             border-radius: 8px; padding: 10px; position: absolute; z-index: 10000; 
-            top: 60px; /* 기존 bottom 대신 top으로 변경하여 아래로 배치 */
-            left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.3s; 
+            top: 60px; left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.3s; 
             font-size: 12px; line-height: 1.5; box-shadow: 0 4px 15px rgba(0,0,0,0.2); word-break: keep-all; 
         }
-        
         .tooltip-text::after { 
-            content: ""; position: absolute; 
-            bottom: 100%; /* 화살표를 박스 위쪽으로 이동 */
-            top: auto;
+            content: ""; position: absolute; bottom: 100%; top: auto;
             left: 50%; margin-left: -6px; border-width: 6px; border-style: solid; 
-            /* 화살표 방향: 위쪽 (아래쪽 색상 지정) */
             border-color: transparent transparent rgba(30, 30, 30, 0.95) transparent; 
         }
         .tooltip-text.show { visibility: visible; opacity: 1; }
 
         /* Grid 비율 */
         .top-summary-container { display: grid; grid-template-columns: 780px 330px; gap: 30px; margin-bottom: 40px; }
-        
         .summary-left { display: flex; gap: 20px; background: #f8f9fb; padding: 25px; border-radius: 15px; align-items: center; width: 100%; }
         .summary-right { background: white; border: 1px solid #eee; border-radius: 15px; padding: 25px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 25px; width: 100%; }
         
@@ -420,8 +532,7 @@
         
         .summary-desc { 
             font-size: 14px; line-height: 1.6; color: #555; background: white; padding: 15px; border-radius: 10px; 
-            word-break: keep-all; 
-            white-space: nowrap; 
+            word-break: keep-all; white-space: nowrap; 
         }
 
         .bottom-details-grid { display: grid; grid-template-columns: 1.9fr 1.1fr; gap: 30px; margin-bottom: 100px; }
@@ -429,28 +540,12 @@
         .avg-legend { font-size: 12px; color: #666; font-weight: normal; display: flex; align-items: center; gap: 6px; background: none; padding: 0; align-self: flex-end; margin-top: 5px; }
         
         .avg-icon-visual { 
-            width: 32px; 
-            height: 0; 
-            border-top: 3px dashed #aaccff; /* 점선 스타일 */
-            display: inline-block; 
-            vertical-align: middle;
-            position: relative; 
-            margin-right: 4px;
+            width: 32px; height: 0; border-top: 3px dashed #aaccff; display: inline-block; 
+            vertical-align: middle; position: relative; margin-right: 4px;
         }
-        
         .avg-icon-visual::after { 
-            content: '';
-            display: block;
-            width: 10px;
-            height: 10px;
-            background-color: white; 
-            border: 2px solid #aaccff; 
-            border-radius: 50%; 
-            position: absolute;
-            top: -5px; 
-            left: 50%;
-            transform: translateX(-50%);
-            box-sizing: border-box;
+            content: ''; display: block; width: 10px; height: 10px; background-color: white; 
+            border: 2px solid #aaccff; border-radius: 50%; position: absolute; top: -5px; left: 50%; transform: translateX(-50%); box-sizing: border-box;
         }
         
         .graph-container { display: flex; justify-content: space-around; align-items: flex-end; height: 200px; border-bottom: 1px solid #ddd; position: relative; padding-left: 30px; flex: 2; margin-bottom: 40px; }
@@ -515,41 +610,23 @@
         .book-item { flex: 0 0 110px; display: flex; flex-direction: column; align-items: center; gap: 5px; }
         
         .book-cover { 
-            width: 100px; height: 130px; 
-            border-radius: 16px;
-            overflow: hidden; 
-            position: relative; 
+            width: 100px; height: 130px; border-radius: 16px; overflow: hidden; position: relative; 
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.03);
-            border: 1px solid rgba(0,0,0,0.04);
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
-            background-color: #fff; 
-            transform: translateZ(0);
+            border: 1px solid rgba(0,0,0,0.04); transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
+            background-color: #fff; transform: translateZ(0);
         }
         
-        .book-cover:hover { 
-            transform: translateY(-8px); 
-            box-shadow: 0 15px 30px rgba(30, 125, 240, 0.15); 
-        }
+        .book-cover:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(30, 125, 240, 0.15); }
 
-        .book-cover img {
-            width: 100%; height: 100%;
-            object-fit: cover; 
-            display: block;
-        }
-        .book-color-1, .book-color-2, .book-color-3, .book-color-4 { background: none; }
-        .book-emoji { display: none; }
-        
+        .book-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .book-title-on-cover { font-size: 13px; line-height: 1.3; font-weight: 800; }
         .book-title { font-size: 12px; text-align: center; line-height: 1.3; margin-top: 5px; }
         
         .btn-list { width: 100%; height: 100%; display: flex; flex-direction: column; gap: 10px; }
         .rec-btn { 
-            width: 100%; flex: 1; 
-            display: flex; justify-content: center; align-items: center; 
-            padding: 0 10px; 
-            background: white; border: 1px solid #ddd; 
-            color: #555; font-weight: 700; 
-            border-radius: 8px; cursor: pointer; transition: 0.2s; 
+            width: 100%; flex: 1; display: flex; justify-content: center; align-items: center; 
+            padding: 0 10px; background: white; border: 1px solid #ddd; 
+            color: #555; font-weight: 700; border-radius: 8px; cursor: pointer; transition: 0.2s; 
             box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
         }
         .rec-btn:hover { background: #f0f8ff; border-color: #1e7df0; color: #1e7df0; transform: translateY(-2px); }
@@ -602,7 +679,7 @@
             <!-- Center Column: 메인 피드 -->
             <div class="center-feed">
                 <!-- Top: Hero Banner (문해력 향상 프로젝트) -->
-                <div class="main-banner-card hero-banner" onclick="location.href='./contents/intro.html'">
+                <div class="main-banner-card hero-banner" onclick="startDiagnosticTest()">
                     <div class="hero-bg-pattern"></div>
                     
                     <!-- Left: 텍스트 정보 -->
@@ -687,40 +764,22 @@
         </div>
     </div>
 
-    <!-- 로딩 화면 (수정됨: 텍스트가 위, 로딩바가 아래 + AI 로봇 이모지 추가) -->
+    <!-- 로딩 화면 -->
     <div id="loading-screen">
-        <!-- AI 로봇 이모지를 SVG 코드로 교체 -->
         <div class="loading-icon">
             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Headphones Band -->
                 <path d="M15 55 C15 25 25 10 50 10 C75 10 85 25 85 55" stroke="#00b0ff" stroke-width="8" stroke-linecap="round"/>
-                
-                <!-- Left Ear -->
                 <rect x="5" y="45" width="12" height="24" rx="4" fill="#0091ea"/>
-                <!-- Right Ear -->
                 <rect x="83" y="45" width="12" height="24" rx="4" fill="#0091ea"/>
-                
-                <!-- Head -->
                 <circle cx="50" cy="55" r="35" fill="white" stroke="#333" stroke-width="2.5"/>
-                
-                <!-- Face Area (Visor) -->
                 <path d="M22 50 C22 38 32 32 50 32 C68 32 78 38 78 50 C78 65 68 73 50 73 C32 73 22 65 22 50 Z" fill="#455a64"/>
-                
-                <!-- Eyes -->
                 <circle cx="38" cy="50" r="5" fill="#00e5ff"/>
                 <circle cx="62" cy="50" r="5" fill="#00e5ff"/>
-                
-                <!-- Mouth -->
                 <path d="M42 60 Q50 66 58 60" stroke="#00e5ff" stroke-width="3" stroke-linecap="round"/>
-                
-                <!-- Head Detail (Top Mark) -->
                 <rect x="46" y="22" width="8" height="3" rx="1.5" fill="#333"/>
-                
-                <!-- Microphone -->
                 <path d="M10 55 Q15 85 45 78" stroke="#333" stroke-width="2.5" stroke-linecap="round" fill="none"/>
             </svg>
         </div>
-        
         <div class="loading-text">결과 분석 중입니다.</div>
         <div class="loading-sub">AI가 <strong>[김엘리]님</strong>의 답안을 채점하고 있어요.</div>
         <div class="loading-track">
@@ -728,42 +787,130 @@
         </div>
     </div>
 
-    <!-- 퀴즈 화면 -->
+    <!-- 퀴즈 화면 (개선된 UI) -->
     <div id="quiz-screen">
-        <div class="quiz-top-bar">
-            <div class="quiz-area-indicator active" id="badge-vocab">어휘력</div>
-            <div class="quiz-area-indicator" id="badge-reading">지문 독해</div>
-        </div>
-        <div class="question-step active" id="q1">
-            <div class="question-title"><span class="q-number-badge">1</span>&lt;보기&gt;의 빈칸에 들어갈 알맞은 말은 무엇인가요?</div>
-            <div class="example-box"><div class="example-text">친구와 노느라 숙제하는 걸 ( &nbsp;&nbsp;&nbsp;&nbsp; ) 말았다.</div></div>
-            <div class="answer-row"><button class="answer-btn" onclick="selectAnswer(this, 1)">잃고</button><button class="answer-btn" onclick="selectAnswer(this, 1)">잊고</button><button class="answer-btn" onclick="selectAnswer(this, 1)">입고</button></div>
-        </div>
-        <div class="question-step" id="q2">
-            <div class="split-layout">
-                <div class="passage-area">
-            <div class="passage-content" style="line-height: 1.8; font-size: 16px; word-break: keep-all; text-align: justify; color: #333;">
-                <strong style="display:block; font-size: 18px; margin-bottom: 20px; color: #000;">
-                    제목: 자연의 청소부, 파리의 한살이
-                </strong>
-                <p style="margin-bottom: 15px;">
-                    &nbsp;&nbsp;파리는 왜 음식물이나 쓰레기통 근처에 자주 모일까요? 이것은 파리의 한살이 과정과 관련이 있습니다. 파리는 나비나 벌처럼 곤충에 속하는 작은 동물입니다. 파리는 <strong>알 &rarr; 애벌레 &rarr; 번데기 &rarr; 어른벌레</strong>의 네 단계를 거치는 한살이 과정을 겪는데, 이 과정을 ‘완전 탈바꿈’이라고 합니다.
-                </p>
-                <p style="margin-bottom: 15px;">
-                    &nbsp;&nbsp;파리의 한살이는 썩은 음식물이나 동물의 배설물에 알을 낳으며 시작됩니다. 이것이 바로 파리가 음식물이나 쓰레기통 근처에서 자주 보이는 이유입니다. 알이 부화하면 ‘구더기’라고 불리는 애벌레가 되는데, 구더기는 자신이 태어난 곳 주변의 썩은 물질을 먹으며 자랍니다. 이 과정은 주변의 더러운 찌꺼기를 줄이는 데 도움이 됩니다. 구더기는 허물을 벗으며 몸집이 커지고, 몸집이 충분히 커지면 움직임을 멈추고 번데기가 됩니다. 번데기 속에서 애벌레의 몸이 어른벌레의 모습으로 바뀌며, 성장이 끝나면 우리가 아는 파리의 모습이 됩니다.
-                </p>
-                <p>
-                    &nbsp;&nbsp;많은 사람들이 파리를 귀찮거나 더러운 해충이라고 생각하지만, 사실 파리는 자라는 동안 썩은 것을 먹어 없애기 때문에 자연을 깨끗하게 만드는 데 도움을 주는 특별한 역할을 합니다. 그래서 과학자들은 파리를 <strong>‘자연의 청소부’</strong>라고 부르며, 최근에는 구더기를 이용해 음식물 쓰레기를 처리하는 연구도 이루어지고 있습니다.
-                </p>
+        <!-- 1. Header -->
+        <div class="quiz-header">
+            <div class="quiz-title-area">
+                <div class="quiz-title-logo">M-KLT</div>
+                <div class="quiz-main-title">문해력 진단 검사</div>
+                
+                <!-- [수정] Progress Indicators Moved next to Title -->
+                <div class="quiz-progress-wrap">
+                    <!-- Badge Vocab -->
+                    <div class="progress-pill active" id="badge-vocab">
+                        <i>🧩</i> 어휘력
+                    </div>
+                    <!-- Badge Reading -->
+                    <div class="progress-pill" id="badge-reading">
+                        <i>📖</i> 지문 독해
+                    </div>
+                </div>
+            </div>
+            
+            <div style="font-size:14px; font-weight:700; color:var(--text-gray);">
+                <span id="progress-text">1 / 2</span>
             </div>
         </div>
-                      <div class="question-area">
-                    <div class="question-title" style="font-size: 16px;"><span class="q-number-badge">2</span>이 글에서 가장 중심이 되는 말은 무엇인가요?</div>
-                    <div class="choice-list"><button class="choice-btn" onclick="selectAnswer(this, 2)">파리의 한살이</button><button class="choice-btn" onclick="selectAnswer(this, 2)">애벌레</button><button class="choice-btn" onclick="selectAnswer(this, 2)">작은 동물</button><button class="choice-btn" onclick="selectAnswer(this, 2)">청소부</button></div>
+
+        <!-- 2. Body -->
+        <div class="quiz-body">
+            <!-- Question 1: Vocabulary (Center Type) -->
+            <div class="question-step active" id="q1">
+                <div class="center-layout-container">
+                    <!-- [수정] 배경색 파란색으로 변경 -->
+                    <div class="q-badge" style="background:var(--primary-blue);">문제 01</div>
+                    <div class="q-text-large">
+                        <span style="color:#000">|</span> 보기 <span style="color:#000">|</span>의 빈칸에 들어갈 알맞은 말은 무엇인가요?
+                    </div>
+
+                    <div class="vocab-box-wrapper">
+                        <!-- [수정] 보기 라벨 개선 (아이콘형 뱃지) - Q 제거, 텍스트만 -->
+                        <div class="vocab-label-badge">
+                            보기
+                        </div>
+                        
+                        <!-- [수정] 텍스트 한 줄 및 공백 추가 -->
+                        <div class="vocab-sentence">
+                            친구와 노느라 숙제하는 것을
+                            <span class="vocab-blank">( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</span>
+                            말았다.
+                        </div>
+                    </div>
+
+                    <div class="answer-grid">
+                        <button class="answer-card-btn" onclick="selectAnswer(this, 1)">잃고</button>
+                        <button class="answer-card-btn" onclick="selectAnswer(this, 1)">잊고</button>
+                        <button class="answer-card-btn" onclick="selectAnswer(this, 1)">입고</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 2: Reading (Split Type) -->
+            <div class="question-step" id="q2">
+                <div class="split-layout-container">
+                    <!-- Left: Passage Viewer -->
+                    <div class="passage-viewer">
+                        <div class="passage-paper">
+                            <div class="passage-title">자연의 청소부, 파리의 한살이</div>
+                            <div class="passage-content">
+                                <p class="p-indent">
+                                    파리는 왜 음식물이나 쓰레기통 근처에 자주 모일까요? 이것은 파리의 한살이 과정과 관련이 있습니다. 파리는 나비나 벌처럼 곤충에 속하는 작은 동물입니다. 파리는 <span class="highlight-word">알&rarr;애벌레&rarr;번데기&rarr;어른벌레</span>의 네 단계를 거치는 한살이 과정을 겪는데, 이 과정을 ‘완전 탈바꿈’이라고 합니다.
+                                </p>
+                                <p class="p-indent">
+                                    파리의 한살이는 썩은 음식물이나 동물의 배설물에 알을 낳으며 시작됩니다. 이것이 바로 파리가 음식물이나 쓰레기통 근처에서 자주 보이는 이유입니다. 알이 부화하면 ‘구더기’라고 불리는 애벌레가 되는데, 구더기는 자신이 태어난 곳 주변의 썩은 물질을 먹으며 자랍니다. 이 과정은 주변의 더러운 찌꺼기를 줄이는 데 도움이 됩니다. 구더기는 허물을 벗으며 몸집이 커지고, 몸집이 충분히 커지면 움직임을 멈추고 번데기가 됩니다. 번데기 속에서 애벌레의 몸이 어른벌레의 모습으로 바뀌며, 성장이 끝나면 우리가 아는 파리의 모습이 됩니다.
+                                </p>
+                                <p class="p-indent">
+                                    많은 사람들이 파리를 귀찮거나 더러운 해충이라고 생각하지만, 사실 파리는 자라는 동안 썩은 것을 먹어 없애기 때문에 자연을 깨끗하게 만드는 데 도움을 주는 특별한 역할을 합니다. 그래서 과학자들은 파리를 <span class="highlight-word">‘자연의 청소부’</span>라고 부르며, 최근에는 구더기를 이용해 음식물 쓰레기를 처리하는 연구도 이루어지고 있습니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right: Question -->
+                    <div class="problem-solver">
+                        <div class="q-badge" style="background:var(--primary-blue);">문제 02</div>
+                        <div class="prob-header">
+                            <div class="prob-q-text">
+                                이 글에서 가장 중심이 되는 말은 무엇인가요?
+                            </div>
+                        </div>
+                        
+                        <div class="choice-stack">
+                            <button class="choice-row-btn" onclick="selectAnswer(this, 2)">
+                                <div class="choice-num">1</div>
+                                <span>파리의 한살이</span>
+                            </button>
+                            <button class="choice-row-btn" onclick="selectAnswer(this, 2)">
+                                <div class="choice-num">2</div>
+                                <span>애벌레</span>
+                            </button>
+                            <button class="choice-row-btn" onclick="selectAnswer(this, 2)">
+                                <div class="choice-num">3</div>
+                                <span>작은 동물</span>
+                            </button>
+                            <button class="choice-row-btn" onclick="selectAnswer(this, 2)">
+                                <div class="choice-num">4</div>
+                                <span>청소부</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="quiz-footer"><div class="progress-text" id="progress-text">1 / 2</div><div class="next-btn-area"><button class="next-arrow" onclick="nextStep()">▶</button></div></div>
+
+        <!-- 3. Footer -->
+        <div class="quiz-footer">
+            <!-- [수정] 꺽쇠 아이콘 적용 -->
+            <button class="next-btn-pill" id="quiz-next-btn" onclick="nextStep()">
+                다음 문제 
+                <span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </span>
+            </button>
+        </div>
     </div>
 
     <!-- 결과 리포트 화면 -->
@@ -858,7 +1005,6 @@
                     <div class="avg-legend"><span class="avg-icon-visual"></span>&#58;&#160; 학년 평균 점수</div>
                 </div>
                 <div class="graph-container">
-                    <!-- [수정] 툴팁 DIV 추가 -->
                     <div id="graph-avg-tooltip" class="klq-tooltip" style="width: auto; padding: 6px 10px; min-width: 140px; transform: translateX(-50%); white-space: nowrap;"></div>
 
                     <div class="y-axis-grid"><div class="grid-line" style="bottom:0%"></div><div class="grid-label" style="bottom:0%">0</div><div class="grid-line" style="bottom:50%"></div><div class="grid-label" style="bottom:50%">50</div><div class="grid-line" style="bottom:100%"></div><div class="grid-label" style="bottom:100%">100</div></div>
@@ -947,13 +1093,11 @@
                 <div class="book-list" id="rec-book-list"></div>
             </div>
             <div class="plus-icon">+</div>
-            <!-- [수정] 이모지 추가된 텍스트 -->
             <div class="rec-group"><div class="rec-title">비교과 콘텐츠</div><div class="btn-list"><button class="rec-btn">📚 엘리하이 북클럽 📚</button><button class="rec-btn">🌍 글로벌 리더십 🤝</button><button class="rec-btn">📝 수행평가+ 💯</button></div></div>
         </div>
     </div>
 </div>
 
-<!-- [추가] 저작권 푸터 (화면 바깥쪽) -->
 <div class="copyright-footer">
     © 2025 유초중사업본부 유초등컨텐츠기획부문 멀티미디어기획팀. All Rights Reserved.
 </div>
@@ -964,9 +1108,9 @@
        ========================================= */
     let currentStep = 1; 
     const totalSteps = 2;
-    let audioCtx = null; // 오디오 컨텍스트는 첫 인터랙션 시 초기화 (Lazy Init)
+    let audioCtx = null; // 오디오 컨텍스트 Lazy Init
 
-    // 리포트 데이터 (JSON 형태 유지)
+    // 리포트 데이터
     const reportData = {
         current: {
             date: '2026.12.11', grade: '초등 4학년', level: '머큐리 💎', klq: '4.8',
@@ -984,7 +1128,6 @@
                 inf: "글 속 단서를 모아 숨겨진 정보를 짐작하는 능력을 더 키우면 좋아요. 문맥을 통해 인물의 감정 변화나 사건의 흐름을 추론하는 연습을 집중적으로 해 보세요. ‘왜 이렇게 했을까?’, ‘다음에는 어떤 일이 일어날까?’ 같은 질문을 스스로 던지며 읽으면 추론 능력이 크게 자라요."
             },
             recommendation: { type: 'advanced', badge: '<응용 코스>', title: '🚀 문해력 업그레이드', desc: '구조 문해 공식으로 지문 읽기' },
-            // [수정] 책 데이터를 이미지 경로와 강사 이름으로 변경
             books: [
                 { title: "뿌리깊은<br>초등국어 독해력", subTitle: "맹지현 선생님", image: "teacher_maeng.jpg" },
                 { title: "빠작 초등 국어<br>비문학 독해", subTitle: "윤지영 선생님", image: "teacher_yoon.jpg" }
@@ -1014,7 +1157,7 @@
     };
 
     /* =========================================
-       2. 오디오 시스템 (최적화: Lazy Init)
+       2. 오디오 시스템
        ========================================= */
     function initAudio() {
         if (!audioCtx) {
@@ -1025,19 +1168,16 @@
     }
 
     function playTone(type) {
-        initAudio(); // 실행 전 체크
+        initAudio(); 
         const now = audioCtx.currentTime;
         const osc = audioCtx.createOscillator();
         const gainNode = audioCtx.createGain();
 
         if (type === 'charging') {
-            // [수정] 게이지가 차오르는 느낌의 상승하는 소리 (약 2.5초)
             osc.type = 'triangle'; 
-            // 주파수: 300Hz(시작) -> 800Hz(끝) 상승
             osc.frequency.setValueAtTime(300, now);
             osc.frequency.linearRampToValueAtTime(800, now + 2.5);
             
-            // 볼륨: 부드럽게 시작해서 끝날 때 페이드 아웃
             gainNode.gain.setValueAtTime(0, now);
             gainNode.gain.linearRampToValueAtTime(0.1, now + 0.1);
             gainNode.gain.setValueAtTime(0.1, now + 2.3);
@@ -1076,7 +1216,14 @@
     }
     
     function selectAnswer(btn, step) { 
-        let container = step === 1 ? document.querySelector('#q1 .answer-row') : document.querySelector('#q2 .choice-list'); 
+        // [수정] 퀴즈 버튼 선택 로직 (클래스 구조 변화에 맞춤)
+        let container;
+        if (step === 1) {
+            container = document.querySelector('#q1 .answer-grid');
+        } else {
+            container = document.querySelector('#q2 .choice-stack');
+        }
+        
         container.querySelectorAll('button').forEach(b => b.classList.remove('selected')); 
         btn.classList.add('selected'); 
     }
@@ -1084,32 +1231,49 @@
     function nextStep() { 
         const currentQuestion = document.getElementById(`q${currentStep}`);
         const isSelected = currentQuestion.querySelector('.selected');
-        if (!isSelected) { alert("정답을 선택해야 다음으로 넘어갈 수 있어요!"); return; }
+        // [수정] 알림 메시지 수정
+        if (!isSelected) { alert("답안을 선택해 주세요."); return; }
         
         if (currentStep < totalSteps) { 
+            // 현재 문제 숨기기
             document.getElementById(`q${currentStep}`).classList.remove('active'); 
-            if(currentStep === 1) document.getElementById('badge-vocab').classList.remove('active');
+            
+            // 배지 업데이트
+            if(currentStep === 1) {
+                document.getElementById('badge-vocab').classList.remove('active');
+                document.getElementById('badge-vocab').style.background = "#fff"; // 완료 처리 시 시각적 변화
+                document.getElementById('badge-vocab').style.color = "#ccc";
+            }
+            
             currentStep++; 
+            
+            // 다음 문제 보이기
             document.getElementById(`q${currentStep}`).classList.add('active'); 
+            
+            // 배지 업데이트
             if(currentStep === 2) document.getElementById('badge-reading').classList.add('active');
+            
+            // 텍스트 및 하단 바 업데이트
             document.getElementById('progress-text').textContent = `${currentStep} / ${totalSteps}`; 
+            
+            // [추가] 마지막 문제일 경우 버튼 텍스트 변경
+            if(currentStep === totalSteps) {
+                // SVG 아이콘 포함하여 업데이트
+                document.getElementById('quiz-next-btn').innerHTML = `제출하기 <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></span>`;
+            }
+            
         } else { 
             // 퀴즈 종료 및 로딩 화면 시작
             document.getElementById('quiz-screen').style.display = 'none'; 
             document.getElementById('loading-screen').style.display = 'flex';
             
-            // [수정] 1. 새로운 차오르는 효과음 재생 (약 2.5초)
             playTone('charging');
 
-            // [수정] 2. CSS 애니메이션 트리거 (게이지 바 채우기)
             const loadingBar = document.getElementById('loading-bar');
-            loadingBar.classList.remove('fill-animation'); // 리셋
-            void loadingBar.offsetWidth; // 리플로우 강제 (애니메이션 재시작용)
+            loadingBar.classList.remove('fill-animation'); 
+            void loadingBar.offsetWidth; 
             loadingBar.classList.add('fill-animation');
 
-            // [수정] 3. 결과 화면 전환 타이밍 조절
-            // 소리(2.5초) + 여유 시간(1초) = 총 3.5초 뒤 결과 화면 표시
-            // 이렇게 하면 로딩 소리가 끝나고 정적이 흐른 뒤 짠! 하고 결과가 나옵니다.
             setTimeout(() => { 
                 document.getElementById('loading-screen').style.display = 'none'; 
                 showResult(); 
@@ -1129,12 +1293,11 @@
     }
 
     /* =========================================
-       4. 리포트 렌더링 및 애니메이션 (최적화)
+       4. 리포트 렌더링 및 애니메이션
        ========================================= */
     function loadReportData(key) {
         const data = reportData[key];
         
-        // 텍스트 데이터 바인딩 (DOM 캐싱 없이 직관성을 위해 직접 호출)
         const setText = (id, text) => document.getElementById(id).innerText = text;
         const setHTML = (id, html) => document.getElementById(id).innerHTML = html;
 
@@ -1178,9 +1341,9 @@
         setText('rec-prog-badge', data.recommendation.badge);
         setText('rec-prog-name', data.recommendation.title);
         setHTML('rec-prog-desc', data.recommendation.desc);
-        recBox.className = `program-box ${data.recommendation.type}`; // 클래스 초기화 후 추가
+        recBox.className = `program-box ${data.recommendation.type}`; 
 
-        // [수정] 책 리스트 업데이트 로직 수정 (이미지 태그 사용)
+        // 책 리스트 업데이트
         const bookList = document.getElementById('rec-book-list');
         bookList.innerHTML = data.books.map(book => `
             <div class="book-item">
@@ -1194,11 +1357,10 @@
             </div>
         `).join('');
 
-        // [수정] 그래프 애니메이션 로직 개선
+        // 그래프 애니메이션
         const barIds = ['bar-vocab', 'bar-fact', 'bar-crit', 'bar-inf'];
         const scoreIds = ['score-vocab', 'score-fact', 'score-crit', 'score-inf'];
         
-        // 1. 초기화 (높이 0)
         data.scores.forEach((score, i) => {
             document.getElementById(scoreIds[i]).innerText = score;
             const bar = document.getElementById(barIds[i]);
@@ -1206,7 +1368,6 @@
             bar.parentElement.classList.remove('animate');
         });
 
-        // 2. 애니메이션 실행 (지연 적용으로 씹힘 방지)
         setTimeout(() => {
             data.scores.forEach((score, i) => {
                 const bar = document.getElementById(barIds[i]);
@@ -1217,14 +1378,12 @@
 
         updateAvgGraph(data.avgScores);
 
-        // [수정] 애니메이션 시간을 1000ms, 1500ms에서 600ms, 800ms로 대폭 단축
         animateValue('scoreDonut', 0, Math.floor((data.correct / 20) * 100), 600, 'donut');
         animateValue('gaugeChar', 0, data.time, 800, 'gauge', (key === 'prev' ? 30 : 36));
     }
 
     function updateAvgGraph(avgScores) {
         const xCoords = [62.5, 187.5, 312.5, 437.5];
-        // 툴팁용 영역 이름 배열
         const categories = ["어휘력", "사실적 독해력", "비판적 독해력", "추론적 독해력"];
         
         let pointsString = "";
@@ -1240,25 +1399,18 @@
                 dots[i].setAttribute('cx', x); 
                 dots[i].setAttribute('cy', y); 
                 
-                // [수정] 툴팁 표시 로직 분리
                 const showTooltip = () => {
                     tooltip.innerHTML = `${categories[i]} <br>학년 평균: <strong>${score}점</strong>`;
-                    // [좌표 수정] 왼쪽 여백 30px을 고려하여 정확한 % 계산
-                    // 30px (고정 여백) + (나머지 100%-30px 영역에서 x가 차지하는 비율)
                     const ratio = x / 500;
                     tooltip.style.left = `calc(30px + (100% - 30px) * ${ratio})`;
-                    
-                    // [위치 수정] 점 아래에 툴팁 표시 (y + 여백)
                     tooltip.style.top = `${y + 15}px`; 
                     tooltip.classList.add('show');
                 };
 
-                // [수정] 점 마우스 오버 시 툴팁 표시
                 dots[i].onmouseenter = showTooltip;
                 
-                // [추가] 터치/클릭 시에도 툴팁 표시 (태블릿 대응)
                 dots[i].onclick = (e) => {
-                    e.stopPropagation(); // 이벤트 버블링 방지 (배경 클릭 시 닫힘과 충돌 방지)
+                    e.stopPropagation(); 
                     showTooltip();
                 };
                 
@@ -1270,7 +1422,7 @@
         document.querySelector('.avg-line').setAttribute('points', pointsString.trim());
     }
 
-    // 통합 애니메이션 함수 (requestAnimationFrame 사용)
+    // 통합 애니메이션 함수
     function animateValue(targetId, start, end, duration, type, avgTime = 0) {
         let startTimestamp = null;
         const element = document.getElementById(targetId);
@@ -1281,24 +1433,20 @@
             const currentVal = Math.floor(progress * (end - start) + start);
 
             if (type === 'donut') {
-                // [수정] SVG 도넛 차트 애니메이션 로직
                 const percent = currentVal;
-                const circumference = 2 * Math.PI * 75; // 반지름 75
+                const circumference = 2 * Math.PI * 75; 
                 const offset = circumference * (1 - percent / 100);
                 element.style.strokeDashoffset = offset;
                 document.getElementById('donutPercentText').textContent = `${percent}%`;
 
             } else if (type === 'gauge') {
-                // 게이지 애니메이션 로직
                 const totalTime = 50;
                 const myPercent = currentVal / totalTime;
                 const avgPercent = avgTime / totalTime;
                 
-                // 내 점수 Arc
                 const pathLength = 251.3;
                 document.querySelector('.gauge-my-arc').style.strokeDashoffset = pathLength * (1 - myPercent);
                 
-                // 내 캐릭터 위치
                 const radius = 80; const centerX = 100; const centerY = 100;
                 const myAngleRad = Math.PI * (1 - myPercent);
                 const charX = centerX + radius * Math.cos(myAngleRad);
@@ -1306,7 +1454,6 @@
                 element.style.left = `${(charX / 200) * 100}%`;
                 element.style.top = `${(charY / 105) * 100}%`;
 
-                // 평균 라벨 위치
                 const avgLabel = document.getElementById('gaugeAvgLabel');
                 const avgAngleRad = Math.PI * (1 - avgPercent);
                 const avgX = centerX + radius * Math.cos(avgAngleRad);
@@ -1324,24 +1471,22 @@
     }
 
     /* =========================================
-       5. 팝업 및 유틸리티 (통합)
+       5. 팝업 및 유틸리티
        ========================================= */
     function closeAllPopups() {
         document.querySelectorAll('.klq-tooltip, .level-dropdown, .tooltip-text').forEach(el => el.classList.remove('show'));
     }
 
-    // [최적화] 모든 팝업 토글 로직을 하나로 통합
     function togglePopup(event, targetId) {
         event.stopPropagation();
         const target = document.getElementById(targetId);
         if (!target) return;
         
         const isShown = target.classList.contains('show');
-        closeAllPopups(); // 다른 거 다 닫고
-        if (!isShown) target.classList.add('show'); // 타겟만 열기
+        closeAllPopups(); 
+        if (!isShown) target.classList.add('show'); 
     }
 
-    // 화면 클릭 시 팝업 닫기
     document.addEventListener('click', closeAllPopups);
 </script>
 
