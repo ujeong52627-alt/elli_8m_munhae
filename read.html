@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>읽기랑 - 메가스터디 초등 문해력</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="app-container">
+        <header id="app-header">
+            <div class="logo"><span>오늘 8분 문해</span> [응용]</div>
+            <div style="display: flex; align-items: center;">
+               <div class="close-app-btn" onclick="location.href='index.html'">
+                   <i data-lucide="x" size="28"></i>
+               </div>
+            </div>
+        </header>
+
+        <div id="app-tabs" class="tabs">
+            <button class="tab-btn tab-vocab" onclick="location.href='vocab.html'"><i data-lucide="lightbulb" size="18"></i> 어휘랑</button>
+            <button class="tab-btn tab-read active" onclick="location.href='read.html'"><i data-lucide="book-open" size="18"></i> 읽기랑</button>
+            <button class="tab-btn tab-structure" onclick="location.href='structure.html'"><i data-lucide="layout" size="18"></i> 구조랑</button>
+            <button class="tab-btn tab-write" onclick="location.href='write.html'"><i data-lucide="pen-tool" size="18"></i> 쓰기랑</button>
+        </div>
+
+        <div class="content-area">
+            <div id="read-screen" class="screen">
+                
+                <div id="read-step-0" class="read-step" style="height: 100%; display: flex; flex-direction: column;">
+                    <div class="center-wrapper">
+                        <div class="instruction-banner">
+                            <span>경복이의 의미를 생각하며 「역사를 품은 기와, 경복이」를 읽어 봅시다.</span>
+                        </div>
+                        <div class="reading-layout">
+                            <div class="text-container" id="passage-text">
+                                <div style="display:flex; align-items:center; gap:15px; margin-bottom: 30px;">
+                                    <img src="imgs/speaker.png" class="speaker-img-btn" style="width: 40px; height: 40px;" onclick="playAudio('audio/read.mp3')" alt="전체 듣기">
+                                    <h2 style="margin:0; font-size: 32px;">역사를 품은 기와, 경복이</h2>
+                                </div>
+                                
+                                <div class="passage-image-wrapper">
+                                    <img src="imgs/read.png" class="passage-image" alt="본문 이미지" onerror="this.src='https://placehold.co/350x350/ffe0b2/5d4037?text=Image'">
+                                </div>
+                                
+                                <p>북악산 아래 자리 잡은 조선의 궁궐, 경복궁은 수백 년 동안 바람과 햇살을 맞으며 조용히 그 자리를 지켜 왔다. 궁궐의 기와들은 각자 자신의 이야기를 품은 듯 은은하게 반짝였다.</p>
+                                <p>어느 날 밤, 아주 오랜 시간 그 자리를 지켜온 기와, '경복이'가 긴 잠에서 깨어났다.</p>
+                                <p>"으음....... 이게 무슨 소리지?"</p>
+                                <p>"요즘 궁궐에서 열리는 음악 공연 소리예요! 참 좋죠?"</p>
+                                <p>낯선 목소리에 깜짝 놀란 경복이가 주위를 둘러보자, 반짝반짝 윤이 나는 기와 하나가 경복이를 바라보고 있었다.</p>
+                                <p>"너는...... 누구니?"</p>
+                                <p>"저는 '궁이'예요. 몇 년 전 경복궁의 낡고 망가진 기와들을 수리할 때 새로 왔어요."</p>
+                                <p>궁이의 말에 경복이가 주위를 둘러 보니 새것처럼 반짝이는 기와들이 가지런히 놓여 있었다. 게다가 마당에서는 화려한 조명과 함께 공연이 한창이었고, 색색의 옷을 입은 사람들이 공연을 즐기고 있었다.</p>
+                                <p>"저 사람들은 누구지? 조선 왕조는 이미 오래 전에 끝났는데.......”</p>
+                                <p>경복이가 혼란스러운 표정으로 중얼거렸다.</p>
+                                <p>“왕조는 수백 년 전에 끝났지만, 우리 궁궐이 지닌 가치와 역사는 아직도 소중하게 보존되고 있어요. 지금은 궁궐이 모든 사람에게 열려 있어서 이렇게 문화를 즐기기 오기도 하고요. 우리가 문화유산을 잘 지켜 온 덕분이죠!”</p>
+                                <p>궁궐의 가치를 알아 주는 사람이 있다는 말에 경복이의 가슴이 두근거렸다.</p>
+                                <p>‘오랜 잠에서 깨어 보니 세상이 많이 변했구나. 시간이 흘러도 우리의 가치를 알아 주는 이들이 있다니……. 우리 궁궐의 가치가 오래 이어질 수 있도록 소중히 지켜야겠어.’</p>
+
+                                <button class="read-done-btn" onclick="revealKeySentence()">
+                                    <i data-lucide="check" size="24" style="vertical-align:middle; margin-right:8px;"></i> 다 읽었어요
+                                </button>
+                                
+                                <div id="key-bubble" class="key-sentence-bubble">
+                                    <div style="display:flex; align-items:center; justify-content:center; gap:15px;">
+                                        <div class="key-icon-circle"><i data-lucide="key" size="24"></i></div>
+                                        <div style="text-align:left;">
+                                            <div style="font-size:16px; font-weight:bold; color:#d97706; margin-bottom:5px;">중심 내용 쏙쏙!</div>
+                                            <div style="font-size:22px; font-weight:bold; color:#1f2937; line-height:1.4;">
+                                                시간이 흘러도 문화유산의 가치는 변하지 않으며,우리가 지켜 나가야 한다.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="height: 150px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="read-step-1" class="read-step" style="display:none; height: 100%; flex-direction: column;">
+    <div class="center-wrapper">
+        <div class="instruction-banner">
+            <span>질문에 알맞은 답을 찾아 눌러 봅시다.</span>
+        </div>
+        
+        <div class="quiz-container">
+            <div class="passage-preview">
+                <p style="margin-top:0;"><strong>역사를 품은 기와, 경복이</strong></p>
+                <p>북악산 아래 자리 잡은 조선의 궁궐, 경복궁은 수백 년 동안 바람과 햇살을 맞으며 조용히 그 자리를 지켜 왔다. 궁궐의 기와들은 각자 자신의 이야기를 품은 듯 은은하게 반짝였다.</p>
+                <p>어느 날 밤, 아주 오랜 시간 그 자리를 지켜온 기와, '경복이'가 긴 잠에서 깨어났다.</p>
+                <p>"으음....... 이게 무슨 소리지?"</p>
+                <p>"요즘 궁궐에서 열리는 음악 공연 소리예요! 참 좋죠?"</p>
+                <p>(중략)</p>
+                <p>“왕조는 수백 년 전에 끝났지만, 우리 궁궐이 지닌 가치와 역사는 아직도 소중하게 보존되고 있어요. 지금은 궁궐이 모든 사람에게 열려 있어서 이렇게 문화를 즐기기 오기도 하고요. 우리가 문화유산을 잘 지켜 온 덕분이죠!”</p>
+            </div>
+
+            <div class="question-area">
+                <div class="question-box">
+                    <span class="q-tag">배경 이해</span>
+                    
+                    <div class="q-text">1. 이 이야기의 배경으로 가장 알맞은 것은 무엇인가요?</div>
+                    
+                    <div class="option-list">
+                        <div class="option-item" onclick="checkQuiz(this, false)">① 조선 시대의 궁궐에서 열린 왕실 연회 자리</div>
+                        <div class="option-item" onclick="checkQuiz(this, true)"> ② 현대의 경복궁에서 문화 공연이 열리는 밤</div>
+                        <div class="option-item" onclick="checkQuiz(this, false)">③ 산속에서 기와들이 모여 사는 비밀 공간</div>
+                        <div class="option-item" onclick="checkQuiz(this, false)">④ 사람들이 살지 않는 오래된 폐허</div>
+                        <div class="option-item" onclick="checkQuiz(this, false)">⑤ 경복궁을 복원하는 공사 현장</div>
+                    </div>
+
+                    <div class="explanation-box" id="quiz-explanation">
+                        <strong>💡해설</strong><br>
+                        글에서 '요즘 궁궐에서 열리는 음악 공연', '화려한 조명'이라는 표현이 나오므로, 현대의 경복궁에서 공연이 열리는 상황인 것을 알 수 있어요.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="nav-controls">
+            <button class="nav-btn" id="prev-btn" onclick="changeStep(-1)"><i data-lucide="chevron-left" color="#374151" size="32"></i></button>
+            <div class="dots-indicator" id="dots-container">
+                </div>
+            <button class="nav-btn" id="next-btn" onclick="changeStep(1)" disabled><i data-lucide="chevron-right" color="#374151" size="32"></i></button>
+        </div>
+    </div>
+     <img id="read-quiz-finger" src="imgs/finger_guide.png" alt="손가락 가이드">
+    <audio id="guide-audio"></audio>
+    <script src="script.js"></script>
+</body>
+</html>
