@@ -38,7 +38,7 @@
                         <div class="reading-layout">
                             <div class="text-container" id="passage-text">
                                 <div style="display:flex; align-items:center; gap:15px; margin-bottom: 30px;">
-                                    <img src="imgs/speaker.png" class="speaker-img-btn" style="width: 40px; height: 40px;" onclick="playAudio('audio/read.mp3')" alt="전체 듣기">
+                                    <img src="imgs/speaker.png" class="speaker-img-btn" style="width: 40px; height: 40px;" onclick="playAudio('audio/read.mp3', null, false)" alt="전체 듣기">
                                     <h2 style="margin:0; font-size: 32px;">역사를 품은 기와, 경복이</h2>
                                 </div>
                                 
@@ -121,17 +121,17 @@
         </div>
     </div>
 </div>
-        <div class="nav-controls">
-            <button class="nav-btn" id="prev-btn" onclick="changeStep(-1)"><i data-lucide="chevron-left" color="#374151" size="32"></i></button>
+       <div class="nav-controls">
+            <button class="nav-btn" id="prev-btn" onclick="changeStep(-1)"></button>
             <div class="dots-indicator" id="dots-container">
-                </div>
-            <button class="nav-btn" id="next-btn" onclick="changeStep(1)" disabled><i data-lucide="chevron-right" color="#374151" size="32"></i></button>
+            </div>
+            <button class="nav-btn" id="next-btn" onclick="changeStep(1)" disabled></button>
         </div>
-    </div>
-     <img id="read-quiz-finger" src="imgs/finger_guide.png" alt="손가락 가이드">
-    <audio id="guide-audio"></audio>
-    <script src="script.js"></script>
-</body> 
-</html>
 
-            
+        <img id="stamp-complete" src="imgs/stamp_best.png" alt="참 잘했어요">
+
+        <audio id="guide-audio"></audio>
+
+    </div> <script src="script.js"></script>
+</body>
+</html>
