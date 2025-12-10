@@ -66,10 +66,19 @@
                 <h3>전문 보기</h3>
                 <div style="font-size:18px; line-height:1.8; text-align:left; color:#333;">
                     <p>북악산 아래 자리 잡은 조선의 궁궐, 경복궁은 수백 년 동안 바람과 햇살을 맞으며 조용히 그 자리를 지켜 왔다. 궁궐의 기와들은 각자 자신의 이야기를 품은 듯 은은하게 반짝였다.</p>
-                    <p>(중략)</p>
-                    <p>“왕조는 수백 년 전에 끝났지만, 우리 궁궐이 지닌 가치와 역사는 아직도 소중하게 보존되고 있어요. 지금은 궁궐이 모든 사람에게 열려 있어서 이렇게 문화를 즐기기 오기도 하고요. 우리가 문화유산을 잘 지켜 온 덕분이죠!”</p>
-                    <p>궁궐의 가치를 알아 주는 사람이 있다는 말에 경복이의 가슴이 두근거렸다.</p>
-                    <p>‘오랜 잠에서 깨어 보니 세상이 많이 변했구나. 시간이 흘러도 우리의 가치를 알아 주는 이들이 있다니……. 우리 궁궐의 가치가 오래 이어질 수 있도록 소중히 지켜야겠어.’</p>
+                                <p>어느 날 밤, 아주 오랜 시간 그 자리를 지켜온 기와, '경복이'가 긴 잠에서 깨어났다.</p>
+                                <p>"으음....... 이게 무슨 소리지?"</p>
+                                <p>"요즘 궁궐에서 열리는 음악 공연 소리예요! 참 좋죠?"</p>
+                                <p>낯선 목소리에 깜짝 놀란 경복이가 주위를 둘러보자, 반짝반짝 윤이 나는 기와 하나가 경복이를 바라보고 있었다.</p>
+                                <p>"너는...... 누구니?"</p>
+                                <p>"저는 '궁이'예요. 몇 년 전 경복궁의 낡고 망가진 기와들을 수리할 때 새로 왔어요."</p>
+                                <p>궁이의 말에 경복이가 주위를 둘러 보니 새것처럼 반짝이는 기와들이 가지런히 놓여 있었다. 게다가 마당에서는 화려한 조명과 함께 공연이 한창이었고, 색색의 옷을 입은 사람들이 공연을 즐기고 있었다.</p>
+                                <p>"저 사람들은 누구지? 조선 왕조는 이미 오래 전에 끝났는데.......”</p>
+                                <p>경복이가 혼란스러운 표정으로 중얼거렸다.</p>
+                                <p>“왕조는 수백 년 전에 끝났지만, 우리 궁궐이 지닌 가치와 역사는 아직도 소중하게 보존되고 있어요. 지금은 궁궐이 모든 사람에게 열려 있어서 이렇게 문화를 즐기기 오기도 하고요. 우리가 문화유산을 잘 지켜 온 덕분이죠!”</p>
+                                <p>궁궐의 가치를 알아 주는 사람이 있다는 말에 경복이의 가슴이 두근거렸다.</p>
+                                <p>‘오랜 잠에서 깨어 보니 세상이 많이 변했구나. 시간이 흘러도 우리의 가치를 알아 주는 이들이 있다니……. 우리 궁궐의 가치가 오래 이어질 수 있도록 소중히 지켜야겠어.’</p>
+
                 </div>
             </div>
         </div>
@@ -85,13 +94,14 @@
         </div>
 
         <div class="nav-controls">
-            <button class="nav-btn" id="prev-btn" onclick="changeStep(-1)"><i data-lucide="chevron-left" color="#374151" size="32"></i></button>
+            <button class="nav-btn" id="prev-btn" onclick="changeStep(-1)"></button>
             <div class="dots-indicator" id="dots-container"></div>
-            <button class="nav-btn" id="next-btn" onclick="changeStep(1)" disabled><i data-lucide="chevron-right" color="#374151" size="32"></i></button>
+            <button class="nav-btn" id="next-btn" onclick="changeStep(1)" disabled></button>
         </div>
-    </div>
-   
-    <audio id="guide-audio"></audio>
-    <script src="script.js"></script>
+
+        <img id="stamp-complete" src="imgs/stamp_best.png" alt="참 잘했어요">
+        <audio id="guide-audio"></audio>
+
+    </div> <script src="script.js"></script>
 </body>
 </html>
